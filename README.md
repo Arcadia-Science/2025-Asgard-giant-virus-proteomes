@@ -84,48 +84,6 @@ Zenodo (tbd)
 
 ### Description of the folder structure
 
-.
-├── .git/                     # Git internal tracking directory (hidden)
-├── .gitignore                # Files and directories ignored by Git
-├── README.md                 # This file: project description and overview
-├── envs/                     # Conda environment definition files
-│   └── dev.yml               # Environment specification for reproducibility
-├── notebooks/                # Jupyter notebooks for analysis and visualization
-│   ├── 00_Setup_Environment.ipynb # Setup (colors, fonts)
-│   ├── 01_Data_Exploration.ipynb  # Initial analysis (Composition, Length)
-│   ├── 02_Annotation_Analysis.ipynb # Func Cat, IPR, SP/Localization analysis
-│   ├── 03_Unknown_Analysis.ipynb  # Investigation of Unknown/Domain categories
-│   └── 04_Divergence_Analysis.ipynb # Length variation, Domain Arch comparison
-│   └── ...                   # Additional notebooks
-├── scripts/                  # Standalone Python or Shell scripts
-│   ├── add_specific_category_IPR_v10.py # Custom function categorization
-│   ├── extract_fasta.py      # Script to create FASTA files from CSV
-│   ├── run_uspnet.sh         # Wrapper script for USPNet
-│   ├── run_deeptmhmm.sh      # Wrapper script for DeepTMHMM
-│   ├── add_disorder.py       # Script to run Metapredict and add column
-│   └── ...                   # Other processing scripts
-├── data/                     # Input data (only smaller reference files in Git)
-│   └── reference/            # Reference files needed by scripts/notebooks
-│       ├── interpro_entry.txt
-│       ├── mapping_parquet_proteinid_to_uniprotkb_or_upi.tsv
-│       └── afdb_found_uniprot_acs_or_upi.csv
-│       └── ...               # Other small (< few MB) lookup tables
-│   └── *(Note: Large input FASTAs/DBs stored externally, e.g., S3, EBI FTP)*
-└── results/                  # Output files (generally NOT committed to Git - add to .gitignore)
-    ├── tables/               # Output data tables (e.g., final DB CSVs)
-    │   ├── proteome_database_v1.1.csv
-    │   └── all_filtered_out_proteins_v0.8.csv # Example latest version
-    │   └── ...
-    ├── plots/                # Generated figures and plots
-    │   └── output_plots_arcadia_style/ # Directory created by setup notebook
-    │       ├── setup_test_plot.png
-    │       └── ...
-    ├── search_results/       # Homology search output files
-    │   ├── results_vs_pdb_v2.m8
-    │   └── results_vs_mgnify.m8
-    └── predictions/          # Outputs from prediction tools
-        ├── DeepTMHMM_Results_Retry/
-        └── USPNet_Processed_Data*/
 
 ### Methods
 
