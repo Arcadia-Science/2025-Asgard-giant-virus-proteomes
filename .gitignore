@@ -1,14 +1,4 @@
-# packages installed in editable mode
-envs/src/**
-
-# Snakemake-related folders and files
-.snakemake/
-/input/
-/output/
-/demo/output/
-/demo/input/
-/logs
-
+# --- Python ---
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -19,20 +9,30 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
+lib/
 lib64/
 parts/
 sdist/
 var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
+
+# PyInstaller
+# Usually these files are written by a python script from a template
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
 # Installer logs
 pip-log.txt
@@ -41,44 +41,126 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 htmlcov/
 .tox/
+.nox/
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
-*,cover
+*.cover
+*.py,cover
 .hypothesis/
-.napari_cache
+.pytest_cache/
+cover/
 
-# Translations
-*.mo
-*.pot
-
-# Sphinx documentation
-docs/_build/
-
-# MkDocs documentation
-/site/
-
-# PyBuilder
-target/
-
-# Pycharm and VSCode
-.idea/
-venv/
-
-# Jupyter notebook checkpoints
+# Jupyter Notebook
+# Checkpoints
 .ipynb_checkpoints
 
-# pyenv
-.python-version
+# IPython
+profile_default/
+ipython_config.py
 
-# OS
+# Spyder
+.spyderproject
+.spyderworkspace
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# --- Conda ---
+# Conda environments
+# It's generally better to share environment.yml files
+# and recreate environments rather than tracking the env itself.
+envs/
+.conda/
+conda-meta/
+# If your environment is named e.g. 'asgard_gv_env' and created in the project root:
+asgard_gv_env/
+
+
+# --- Data Files ---
+# Large data files or raw data that can be downloaded/regenerated.
+# Be careful here: if some smaller, essential data files *should* be tracked,
+# you can explicitly add them back with ! (e.g., !data/essential_lookup_table.csv)
+# Or, better, use Git LFS for large data files.
+*.csv # If your CSVs are very large outputs or raw data.
+*.tsv # If your TSVs are very large outputs or raw data.
+*.fasta # If these are huge input files that can be fetched.
+*.fna
+*.faa
+*.gbk
+*.gbff
+# Add other large data file extensions as needed
+
+# Specific large files from your project (examples, adjust as needed)
+# proteome_database_*.csv # If these get very large and are primary outputs
+# data/input_proteomes/* # If these are downloaded and not manually curated small files
+# data/orthofinder_results/ # OrthoFinder can generate a lot of data
+# data/interproscan_results/ # InterProScan outputs can be large
+
+# --- Output & Intermediate Files ---
+# Outputs from scripts or analyses that can be regenerated
+output_plots/
+results/
+intermediate_files/
+logs/
+*.log
+*.tmp
+*.temp
+# MMseqs2 databases/indices if they are large and built from inputs
+MGnify_DB/
+# TrimAl or MAFFT alignment outputs if very numerous/large and reproducible
+MultipleSequenceAlignments/
+Orthogroup_Sequences/ # If these are just copies from input proteomes into OG folders
+
+# --- Operating System Files ---
 .DS_Store
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 
-# written by setuptools_scm
-**/_version.py
+# --- IDEs and Editors ---
+# IntelliJ
+.idea/
+*.iml
+*.iws
+# Eclipse
+.project
+.classpath
+.settings/
+# NetBeans
+nbproject/
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
 
-# Nextflow related folders and files
-.nextflow*
-work/
+# --- Miscellaneous ---
+# Secrets or sensitive configuration files (ALWAYS ignore these)
+secrets.yml
+config.prod.json
+*.env # For environment variables, unless it's a .env.example template
+
+# Temporary files from various tools
+*~
+*.bak
+*.swp
+*.swo
+
+# --- Arcadia Science Specific (if any, from your README) ---
+# If there are specific large output directories from Arcadia tools not covered above.
+
+# --- Final Data Products (Consider for Git LFS if large but need to be versioned) ---
+# If proteome_database_vX.Y.csv is the final product and needs versioning but is large,
+# consider Git LFS. For now, if it's easily regenerated or too big, ignore it.
+# proteome_database_v2.6.csv
+# genome_assembly_taxonomy_list.csv # This is likely small enough to track
+
+
