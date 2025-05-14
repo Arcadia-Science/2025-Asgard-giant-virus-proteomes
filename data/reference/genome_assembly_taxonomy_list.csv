@@ -1,0 +1,759 @@
+Source_Genome_Assembly_Accession,NCBI_TaxID,Specific_Taxonomy,Group
+GCA_003662875.1,2795491.0,UnknownPhylum,Asgard
+GCA_003662885.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_003662935.1,2795491.0,UnknownPhylum,Asgard
+GCA_011364905.1,2053491.0,Thorarchaeota,Asgard
+GCA_011364925.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_011364945.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_011364965.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_011364975.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_011364985.1,2053491.0,Thorarchaeota,Asgard
+GCA_011365025.1,2053491.0,Thorarchaeota,Asgard
+GCA_011365055.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_011366225.1,2591838.0,UnknownPhylum,Asgard
+GCA_011366235.1,2591838.0,UnknownPhylum,Asgard
+GCA_011366245.1,2591838.0,UnknownPhylum,Asgard
+GCA_011366285.1,2591838.0,UnknownPhylum,Asgard
+GCA_011366295.1,2591838.0,UnknownPhylum,Asgard
+GCA_011775775.1,2053491.0,Thorarchaeota,Asgard
+GCA_011776415.1,2053491.0,Thorarchaeota,Asgard
+GCA_013166775.1,2591838.0,UnknownPhylum,Asgard
+GCA_013166835.1,2591838.0,UnknownPhylum,Asgard
+GCA_016926735.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_016927615.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_016930515.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_016932935.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_016933055.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_016933575.1,2053491.0,Thorarchaeota,Asgard
+GCA_018335335.1,2053491.0,Thorarchaeota,Asgard
+GCA_018383815.1,3067279.0,UnknownPhylum,Asgard
+GCA_018383835.1,3067279.0,UnknownPhylum,Asgard
+GCA_018383855.1,3067279.0,UnknownPhylum,Asgard
+GCA_018383875.1,3067279.0,UnknownPhylum,Asgard
+GCA_018383895.1,3067279.0,UnknownPhylum,Asgard
+GCA_019894655.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894665.1,2053491.0,Thorarchaeota,Asgard
+GCA_019894685.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894715.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894735.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894755.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894765.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_019894795.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_019894815.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894835.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894855.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894875.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894885.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894955.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_019894975.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_020343655.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_020344955.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_020348965.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_020348985.1,2053491.0,Thorarchaeota,Asgard
+GCA_020351745.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_020353515.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_020355105.1,2053491.0,Thorarchaeota,Asgard
+GCA_021158895.1,2053490.0,Odinarchaeota,Asgard
+GCA_021160805.1,2053490.0,Odinarchaeota,Asgard
+GCA_021161985.1,2053490.0,Odinarchaeota,Asgard
+GCA_021162905.1,2053490.0,Odinarchaeota,Asgard
+GCA_021399335.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021399345.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021399375.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021399395.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021399405.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021498085.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021498095.1,3049170.0,Other/Unknown,Asgard
+GCA_021498125.1,2053491.0,Thorarchaeota,Asgard
+GCA_022096825.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096855.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096875.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096895.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096915.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096935.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096945.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022096975.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022574115.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_022866525.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_022868585.1,2053491.0,Thorarchaeota,Asgard
+GCA_023127985.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023128215.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023128465.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023128565.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023128605.1,2053491.0,Thorarchaeota,Asgard
+GCA_023128635.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023129395.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023129495.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023129555.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023131085.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023131185.1,2053491.0,Thorarchaeota,Asgard
+GCA_023132455.1,2053491.0,Thorarchaeota,Asgard
+GCA_023132955.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023133715.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023134215.1,2053491.0,Thorarchaeota,Asgard
+GCA_023134555.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023134625.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023134855.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023135215.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023135665.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023136245.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023136515.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023137035.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023137225.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023139025.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023139085.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023139145.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023139155.1,2053491.0,Thorarchaeota,Asgard
+GCA_023139415.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023139815.1,2053491.0,Thorarchaeota,Asgard
+GCA_023139955.1,2053491.0,Thorarchaeota,Asgard
+GCA_023140315.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023140335.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023140375.1,2053491.0,Thorarchaeota,Asgard
+GCA_023140715.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023141005.1,2053491.0,Thorarchaeota,Asgard
+GCA_023142255.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_023143835.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_023270155.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_024269045.1,2591838.0,UnknownPhylum,Asgard
+GCA_024269055.1,2591838.0,UnknownPhylum,Asgard
+GCA_025839675.1,2951803.0,Lokiarchaeota,Asgard
+GCA_026702845.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_028683055.1,2719382.0,UnknownPhylum,Asgard
+GCA_029210805.1,2053491.0,Thorarchaeota,Asgard
+GCA_029858305.1,2053491.0,Thorarchaeota,Asgard
+GCA_029880815.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_029882335.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_030016755.1,3045163.0,Hodarchaeota,Asgard
+GCA_030018135.1,3045163.0,Hodarchaeota,Asgard
+GCA_030587365.2,2830916.0,UnknownPhylum,Asgard
+GCA_030587375.2,2830916.0,UnknownPhylum,Asgard
+GCA_030587405.2,3036978.0,UnknownPhylum,Asgard
+GCA_030587425.1,2799008.0,Hermodarchaeota,Asgard
+GCA_030587435.2,2799005.0,UnknownPhylum,Asgard
+GCA_030587465.1,2799008.0,Hermodarchaeota,Asgard
+GCA_030587475.2,3036983.0,UnknownPhylum,Asgard
+GCA_030587505.2,3036967.0,UnknownPhylum,Asgard
+GCA_030587525.2,3036967.0,UnknownPhylum,Asgard
+GCA_030587545.2,3036967.0,UnknownPhylum,Asgard
+GCA_030587555.2,2799012.0,Wukongarchaeota,Asgard
+GCA_030587585.2,3036966.0,Njordarchaeota,Asgard
+GCA_030587605.2,3036989.0,Njordarchaeota,Asgard
+GCA_030587675.2,2799012.0,Wukongarchaeota,Asgard
+GCA_033723575.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_034660795.1,2591838.0,UnknownPhylum,Asgard
+GCA_035283105.1,3069329.0,Hodarchaeota,Asgard
+GCA_035315145.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_035315165.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_035528095.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_035528665.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_035531035.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_036161275.1,2591838.0,UnknownPhylum,Asgard
+GCA_036396015.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_036444335.1,2053491.0,Thorarchaeota,Asgard
+GCA_036478715.1,2053491.0,Thorarchaeota,Asgard
+GCA_036478875.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_036479975.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_036481155.1,2053491.0,Thorarchaeota,Asgard
+GCA_037305845.1,3126528.0,UnknownPhylum,Asgard
+GCA_037308085.1,3126527.0,UnknownPhylum,Asgard
+GCA_037386685.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_037386705.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_037386725.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_038110025.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_038114765.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_038819355.1,3058035.0,UnknownPhylum,Asgard
+GCA_038820475.1,3058035.0,UnknownPhylum,Asgard
+GCA_038821275.1,3058035.0,UnknownPhylum,Asgard
+GCA_038822405.1,3058035.0,UnknownPhylum,Asgard
+GCA_038824485.1,3058035.0,UnknownPhylum,Asgard
+GCA_038824995.1,3058036.0,UnknownPhylum,Asgard
+GCA_038825165.1,2053491.0,Thorarchaeota,Asgard
+GCA_038825615.1,3058036.0,UnknownPhylum,Asgard
+GCA_038826135.1,2053490.0,Odinarchaeota,Asgard
+GCA_038826975.1,3058035.0,UnknownPhylum,Asgard
+GCA_038834185.1,3058035.0,UnknownPhylum,Asgard
+GCA_038837545.1,3058035.0,UnknownPhylum,Asgard
+GCA_038840315.1,3058035.0,UnknownPhylum,Asgard
+GCA_038840935.1,3058035.0,UnknownPhylum,Asgard
+GCA_038846665.1,3058035.0,UnknownPhylum,Asgard
+GCA_038848675.1,3058036.0,UnknownPhylum,Asgard
+GCA_038849455.1,3058036.0,UnknownPhylum,Asgard
+GCA_038851285.1,2053490.0,Odinarchaeota,Asgard
+GCA_038854135.1,3058035.0,UnknownPhylum,Asgard
+GCA_038855695.1,3058035.0,UnknownPhylum,Asgard
+GCA_038858525.1,3058035.0,UnknownPhylum,Asgard
+GCA_038861695.1,3058035.0,UnknownPhylum,Asgard
+GCA_038863965.1,3058035.0,UnknownPhylum,Asgard
+GCA_038866325.1,3058035.0,UnknownPhylum,Asgard
+GCA_038868355.1,3058035.0,UnknownPhylum,Asgard
+GCA_038871495.1,3058036.0,UnknownPhylum,Asgard
+GCA_038871535.1,3058035.0,UnknownPhylum,Asgard
+GCA_038871565.1,3058036.0,UnknownPhylum,Asgard
+GCA_038871775.1,3058036.0,UnknownPhylum,Asgard
+GCA_038872075.1,3058036.0,UnknownPhylum,Asgard
+GCA_038872655.1,3058035.0,UnknownPhylum,Asgard
+GCA_038873595.1,3058035.0,UnknownPhylum,Asgard
+GCA_038881135.1,3058035.0,UnknownPhylum,Asgard
+GCA_038883015.1,3058035.0,UnknownPhylum,Asgard
+GCA_038884015.1,3058035.0,UnknownPhylum,Asgard
+GCA_038884375.1,3058036.0,UnknownPhylum,Asgard
+GCA_038886715.1,3058035.0,UnknownPhylum,Asgard
+GCA_038889235.1,3058035.0,UnknownPhylum,Asgard
+GCA_038893995.1,2053491.0,Thorarchaeota,Asgard
+GCA_038894575.1,3058035.0,UnknownPhylum,Asgard
+GCA_038897395.1,3058035.0,UnknownPhylum,Asgard
+GCA_040225955.1,3163616.0,UnknownPhylum,Asgard
+GCA_041862095.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_041862115.1,2591838.0,UnknownPhylum,Asgard
+GCA_046482545.1,2053491.0,Thorarchaeota,Asgard
+GCA_046483985.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_046497275.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_046758425.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_046758445.1,2053491.0,Thorarchaeota,Asgard
+GCA_046759345.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_046761065.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_048061815.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_008000775.2,2594042.0,Prometheoarchaeota,Asgard
+GCA_000320725.1,1077221.0,Mimiviridae,GV
+GCA_000838105.1,176652.0,Unclassified Virus,GV
+GCA_000839765.1,37665.0,Phycodnaviridae,GV
+GCA_000847045.1,10506.0,Phycodnaviridae,GV
+GCA_000848865.1,180170.0,Unclassified Virus,GV
+GCA_000867825.1,399781.0,Phycodnaviridae,GV
+GCA_000869125.1,345201.0,Unclassified Virus,GV
+GCA_000871245.1,380598.0,Phycodnaviridae,GV
+GCA_000873685.1,46021.0,Phycodnaviridae,GV
+GCA_000874805.1,39420.0,Unclassified Virus,GV
+GCA_000887095.1,694581.0,Marseilleviridae,GV
+GCA_000888735.1,212035.0,Mimiviridae,GV
+GCA_000889395.1,693272.0,Unclassified Virus,GV
+GCA_000891235.1,68347.0,Unclassified Virus,GV
+GCA_000893455.1,999883.0,Marseilleviridae,GV
+GCA_000893915.1,1094892.0,Mimiviridae,GV
+GCA_000904035.1,1269028.0,Mimiviridae,GV
+GCA_000906615.1,1235314.0,Mimiviridae,GV
+GCA_000909775.1,345198.0,Unclassified Virus,GV
+GCA_000911655.1,1349409.0,Pandoraviridae,GV
+GCA_000911955.1,1349410.0,Pandoraviridae,GV
+GCA_000914535.1,1301280.0,Iridoviridae,GV
+GCA_000915575.1,345585.0,Unclassified Virus,GV
+GCA_000918955.1,1465751.0,Iridoviridae,GV
+GCA_000923155.1,72201.0,Unclassified Virus,GV
+GCA_000924835.1,1560514.0,Unknown,GV
+GCA_000928575.1,1605721.0,Pandoraviridae,GV
+GCA_001274405.1,1697349.0,Unclassified Virus,GV
+GCA_001602085.1,1813599.0,Marseilleviridae,GV
+GCA_001654305.1,1826170.0,Marseilleviridae,GV
+GCA_001806195.1,1720526.0,Marseilleviridae,GV
+GCA_001887825.1,1917232.0,Unclassified Virus,GV
+GCA_002005685.1,1955558.0,Marseilleviridae,GV
+GCA_002826725.1,1421067.0,Unknown,GV
+GCA_002827565.1,42683.0,Phycodnaviridae,GV
+GCA_002833785.1,83442.0,Phycodnaviridae,GV
+GCA_002833825.1,231992.0,Unclassified Virus,GV
+GCA_002892525.1,2023057.0,Mimiviridae,GV
+GCA_002924545.1,1842663.0,Mimiviridae,GV
+GCA_002924555.1,1128140.0,Mimiviridae,GV
+GCA_002966195.1,2071566.0,Mimiviridae,GV
+GCA_002966215.1,1977633.0,Mimiviridae,GV
+GCA_002966235.1,1977631.0,Mimiviridae,GV
+GCA_002966255.1,1977638.0,Mimiviridae,GV
+GCA_002966275.1,1977640.0,Mimiviridae,GV
+GCA_002966295.1,1988039.0,Mimiviridae,GV
+GCA_002966315.1,1128135.0,Mimiviridae,GV
+GCA_002966335.1,554168.0,Mimiviridae,GV
+GCA_002966345.1,1899318.0,Mimiviridae,GV
+GCA_002966365.1,212035.0,Mimiviridae,GV
+GCA_002966375.1,212035.0,Mimiviridae,GV
+GCA_002966385.1,212035.0,Mimiviridae,GV
+GCA_002966395.1,212035.0,Mimiviridae,GV
+GCA_002966405.1,2024608.0,Unclassified Virus,GV
+GCA_002966415.1,1420594.0,Mimiviridae,GV
+GCA_002966425.1,1835008.0,Mimiviridae,GV
+GCA_002966435.1,1247379.0,Mimiviridae,GV
+GCA_002966445.1,1766765.0,Mimiviridae,GV
+GCA_002966455.1,1461100.0,Mimiviridae,GV
+GCA_002966465.1,1956188.0,Mimiviridae,GV
+GCA_002966475.2,2126984.0,Mimiviridae,GV
+GCA_002966485.2,2126985.0,Mimiviridae,GV
+GCA_003069485.1,346932.0,Phycodnaviridae,GV
+GCA_003093215.1,1278258.0,Phycodnaviridae,GV
+GCA_003093335.1,1278255.0,Phycodnaviridae,GV
+GCA_003093355.1,1278251.0,Phycodnaviridae,GV
+GCA_003093395.1,1278253.0,Phycodnaviridae,GV
+GCA_003093415.1,1278254.0,Phycodnaviridae,GV
+GCA_003093455.1,1278265.0,Phycodnaviridae,GV
+GCA_003093495.1,1278248.0,Phycodnaviridae,GV
+GCA_003093515.1,1278247.0,Phycodnaviridae,GV
+GCA_003093555.1,1278278.0,Phycodnaviridae,GV
+GCA_003093575.1,46019.0,Phycodnaviridae,GV
+GCA_003093615.1,1278263.0,Phycodnaviridae,GV
+GCA_003093635.1,1278261.0,Phycodnaviridae,GV
+GCA_003093655.1,1278249.0,Phycodnaviridae,GV
+GCA_003093675.1,1278246.0,Phycodnaviridae,GV
+GCA_003093715.1,1278262.0,Phycodnaviridae,GV
+GCA_003093735.1,1278252.0,Phycodnaviridae,GV
+GCA_003093755.1,1278250.0,Phycodnaviridae,GV
+GCA_003093775.1,240269.0,Phycodnaviridae,GV
+GCA_003093795.1,240263.0,Phycodnaviridae,GV
+GCA_003093815.1,240268.0,Phycodnaviridae,GV
+GCA_003093835.1,240271.0,Phycodnaviridae,GV
+GCA_003093855.1,1278257.0,Phycodnaviridae,GV
+GCA_003225935.1,755274.0,Phycodnaviridae,GV
+GCA_003233895.1,2107709.0,Pandoraviridae,GV
+GCA_003233915.1,2107708.0,Pandoraviridae,GV
+GCA_003233935.1,2107707.0,Pandoraviridae,GV
+GCA_003328565.1,1421424.0,Phycodnaviridae,GV
+GCA_003328585.1,1421422.0,Phycodnaviridae,GV
+GCA_003726615.1,1370065.0,Unclassified Virus,GV
+GCA_003814025.1,2487763.0,Mimiviridae,GV
+GCA_003814045.1,2487764.0,Mimiviridae,GV
+GCA_003814065.1,2487765.0,Mimiviridae,GV
+GCA_003814085.1,2487766.0,Chaseviridae,GV
+GCA_003814105.1,2487767.0,Mimiviridae,GV
+GCA_003814125.1,2487768.0,Mimiviridae,GV
+GCA_003814145.1,2487769.0,Mimiviridae,GV
+GCA_003814165.1,2487770.0,Mimiviridae,GV
+GCA_003814185.1,2487771.0,Mimiviridae,GV
+GCA_003814265.1,2487775.0,Mimiviridae,GV
+GCA_003815115.1,212035.0,Mimiviridae,GV
+GCA_003815135.1,212035.0,Mimiviridae,GV
+GCA_003815155.1,212035.0,Mimiviridae,GV
+GCA_004151645.2,2496520.0,Mimiviridae,GV
+GCA_004156275.1,2109586.0,Mimiviridae,GV
+GCA_004156295.1,2109587.0,Mimiviridae,GV
+GCA_006118515.1,755273.0,Phycodnaviridae,GV
+GCA_006449455.1,2847091.0,Iridoviridae,GV
+GCA_006450515.1,1958810.0,Marseilleviridae,GV
+GCA_006451625.1,2137174.0,Iridoviridae,GV
+GCA_006451655.1,2137175.0,Iridoviridae,GV
+GCA_006451765.1,2137242.0,Marseilleviridae,GV
+GCA_006457485.1,2494350.0,Iridoviridae,GV
+GCA_006457505.1,2494350.0,Iridoviridae,GV
+GCA_006457945.1,2578140.0,Iridoviridae,GV
+GCA_006458685.1,263891.0,Iridoviridae,GV
+GCA_006465445.1,1394979.0,Unclassified Virus,GV
+GCA_006465685.1,2848011.0,Iridoviridae,GV
+GCA_006472045.1,1733873.0,Marseilleviridae,GV
+GCA_007832615.1,273651.0,Iridoviridae,GV
+GCA_007833035.1,180170.0,Unclassified Virus,GV
+GCA_007833095.1,65424.0,Iridoviridae,GV
+GCA_010974655.1,181211.0,Phycodnaviridae,GV
+GCA_011894875.1,65424.0,Iridoviridae,GV
+GCA_012923495.1,565290.0,Iridoviridae,GV
+GCA_013490715.1,1697349.0,Unclassified Virus,GV
+GCA_014858805.1,565290.0,Iridoviridae,GV
+GCA_016103525.1,180170.0,Unclassified Virus,GV
+GCA_016103535.1,180170.0,Unclassified Virus,GV
+GCA_016455495.1,216928.0,Iridoviridae,GV
+GCA_016811285.1,180170.0,Unclassified Virus,GV
+GCA_019333625.1,1697349.0,Unclassified Virus,GV
+GCA_021351675.1,65424.0,Iridoviridae,GV
+GCA_021351685.1,65424.0,Iridoviridae,GV
+GCA_022585115.1,212035.0,Mimiviridae,GV
+GCA_022694475.2,1697349.0,Unclassified Virus,GV
+GCA_024266865.1,212035.0,Mimiviridae,GV
+GCA_024637765.1,180170.0,Unclassified Virus,GV
+GCA_024703195.1,65424.0,Iridoviridae,GV
+GCA_024735215.1,65424.0,Iridoviridae,GV
+GCA_025838275.1,251749.0,Phycodnaviridae,GV
+GCA_026411265.1,216928.0,Iridoviridae,GV
+GCA_026411275.1,216928.0,Iridoviridae,GV
+GCA_026411285.1,216928.0,Iridoviridae,GV
+GCA_027920715.1,655341.0,Iridoviridae,GV
+GCA_029376335.1,707878.0,Unclassified Virus,GV
+GCA_029885335.1,3060017.0,Unknown,GV
+GCA_029891415.1,2811091.0,Mimiviridae,GV
+GCA_029982575.1,180170.0,Unclassified Virus,GV
+GCA_030143515.1,180170.0,Unclassified Virus,GV
+GCA_030515945.1,176652.0,Unclassified Virus,GV
+GCA_031190075.1,2568002.0,Pandoraviridae,GV
+GCA_031198525.1,2682469.0,Mimiviridae,GV
+GCA_031200605.1,2721224.0,Iridoviridae,GV
+GCA_031242955.1,2813486.0,Mimiviridae,GV
+GCA_031246425.1,2823154.0,Pandoraviridae,GV
+GCA_031287495.1,2905229.0,Iridoviridae,GV
+GCA_031310605.1,2922419.0,Phycodnaviridae,GV
+GCA_031781565.1,212035.0,Mimiviridae,GV
+GCA_032138105.1,180170.0,Unclassified Virus,GV
+GCA_036418505.1,180170.0,Unclassified Virus,GV
+GCA_000865825.1,181082.0,Phycodnaviridae,GV
+GCA_000867605.1,113370.0,Ascoviridae,GV
+GCA_000869685.1,322019.0,Unknown,GV
+GCA_000871485.1,260797.0,Ascoviridae,GV
+GCA_000881595.1,158683.0,Ascoviridae,GV
+GCA_000916235.1,345198.0,Unclassified Virus,GV
+GCA_000916835.1,1450746.0,Pithoviridae,GV
+GCA_001995575.1,1903266.0,Mimiviridae,GV
+GCA_002114025.1,1932881.0,Mimiviridae,GV
+GCA_002818865.1,328614.0,Ascoviridae,GV
+GCA_002818885.1,1246651.0,Ascoviridae,GV
+GCA_002827745.1,97195.0,Unclassified Virus,GV
+GCA_002966355.1,1899318.0,Mimiviridae,GV
+GCA_003051125.1,1477405.0,Mimiviridae,GV
+GCA_003051145.1,1477405.0,Mimiviridae,GV
+GCA_003051705.1,1477405.0,Mimiviridae,GV
+GCA_003071505.1,187397.0,Phycodnaviridae,GV
+GCA_003093235.1,1278279.0,Phycodnaviridae,GV
+GCA_003093255.1,1278273.0,Phycodnaviridae,GV
+GCA_003093275.1,1278270.0,Phycodnaviridae,GV
+GCA_003093295.1,1278268.0,Phycodnaviridae,GV
+GCA_003093315.1,1278275.0,Phycodnaviridae,GV
+GCA_003093375.1,1278269.0,Phycodnaviridae,GV
+GCA_003093435.1,1278277.0,Phycodnaviridae,GV
+GCA_003093475.1,1278271.0,Phycodnaviridae,GV
+GCA_003093535.1,1278274.0,Phycodnaviridae,GV
+GCA_003093595.1,1278276.0,Phycodnaviridae,GV
+GCA_003093695.1,1278272.0,Phycodnaviridae,GV
+GCA_003258235.1,181216.0,Phycodnaviridae,GV
+GCA_003328545.1,1421423.0,Phycodnaviridae,GV
+GCA_003328605.1,1421421.0,Phycodnaviridae,GV
+GCA_003333125.1,938081.0,Phycodnaviridae,GV
+GCA_003333145.1,938082.0,Phycodnaviridae,GV
+GCA_003333165.1,938083.0,Phycodnaviridae,GV
+GCA_003333205.1,938083.0,Phycodnaviridae,GV
+GCA_003814205.1,2487772.0,Pithoviridae-like,GV
+GCA_003814225.1,2487773.0,Pithoviridae-like,GV
+GCA_004131025.1,2035708.0,Iridoviridae,GV
+GCA_004788555.1,2039780.0,Unclassified Virus,GV
+GCA_006449695.1,1268039.0,Ascoviridae,GV
+GCA_006451795.1,1561067.0,Ascoviridae,GV
+GCA_006452115.1,2293314.0,Ascoviridae,GV
+GCA_006452135.1,1302812.0,Unclassified Virus,GV
+GCA_010974645.1,181210.0,Phycodnaviridae,GV
+GCA_010974665.1,181212.0,Phycodnaviridae,GV
+GCA_010974675.1,181214.0,Phycodnaviridae,GV
+GCA_010974685.1,181215.0,Phycodnaviridae,GV
+GCA_010974695.1,181217.0,Phycodnaviridae,GV
+GCA_013187195.1,1477405.0,Mimiviridae,GV
+GCA_013187205.1,1477405.0,Mimiviridae,GV
+GCA_013187215.1,1477405.0,Mimiviridae,GV
+GCA_013267925.1,1477405.0,Mimiviridae,GV
+GCA_031199635.1,2713452.0,Unknown,GV
+GCA_031200085.1,2716914.0,Mimiviridae,GV
+GCA_031232825.1,2763244.0,Unclassified Virus,GV
+GCA_031259775.1,2862371.0,Mimiviridae,GV
+GCA_031301755.1,2909297.0,Phycodnaviridae,GV
+GCA_900176665.1,1973452.0,Mimiviridae,GV
+GCA_900205285.1,2023205.0,Mimiviridae,GV
+GCA_900323535.1,2126980.0,Mimiviridae,GV
+GCA_900323555.1,2126979.0,Mimiviridae,GV
+GCA_002937195.1,2079134.0,Phycodnaviridae,GV
+GCA_013187235.1,1477405.0,Mimiviridae,GV
+GCA_013187255.1,1477405.0,Mimiviridae,GV
+GCA_000839605.1,36363.0,Iridoviridae,GV
+GCA_000841005.1,265294.0,Unclassified Virus,GV
+GCA_000844425.1,10493.0,Unclassified Virus,GV
+GCA_000844885.1,256729.0,Iridoviridae,GV
+GCA_000868565.1,328615.0,Ascoviridae,GV
+GCA_000872425.2,1785753.0,Unclassified Virus,GV
+GCA_000885975.1,642926.0,Unclassified Virus,GV
+GCA_000887855.1,696472.0,Unclassified Virus,GV
+GCA_000888835.1,880162.0,Unclassified Virus,GV
+GCA_000889515.1,880159.0,Unclassified Virus,GV
+GCA_000890375.1,880161.0,Unclassified Virus,GV
+GCA_000897115.1,84739.0,Unclassified Virus,GV
+GCA_000905435.1,754064.0,Unclassified Virus,GV
+GCA_000906035.1,755272.0,Phycodnaviridae,GV
+GCA_001399225.1,1663209.0,Unclassified Virus,GV
+GCA_001399265.1,1663210.0,Unclassified Virus,GV
+GCA_001399285.1,1663208.0,Unclassified Virus,GV
+GCA_001430035.1,1586715.0,Phycodnaviridae,GV
+GCA_001430255.1,1586712.0,Mimiviridae,GV
+GCA_001430455.1,1586714.0,Phycodnaviridae,GV
+GCA_001430655.1,1586713.0,Phycodnaviridae,GV
+GCA_001448375.1,100217.0,Unclassified Virus,GV
+GCA_001678255.1,638660.0,Unclassified Virus,GV
+GCA_001717415.1,1887314.0,Iridoviridae,GV
+GCA_001974475.1,1898060.0,Iridoviridae,GV
+GCA_002826565.1,100220.0,Iridoviridae,GV
+GCA_002826605.1,198068.0,Iridoviridae,GV
+GCA_002827705.1,373996.0,Phycodnaviridae,GV
+GCA_002833625.1,3049523.0,Ascoviridae,GV
+GCA_002833685.1,10490.0,Unclassified Virus,GV
+GCA_003033105.1,540070.0,Unclassified Virus,GV
+GCA_003051645.1,880160.0,Unclassified Virus,GV
+GCA_003051685.1,1120767.0,Unclassified Virus,GV
+GCA_003225875.1,754068.0,Phycodnaviridae,GV
+GCA_003225975.1,754063.0,Unclassified Virus,GV
+GCA_003226015.1,754065.0,Unclassified Virus,GV
+GCA_003226055.1,754062.0,Unclassified Virus,GV
+GCA_006449475.1,575979.0,Iridoviridae,GV
+GCA_006449495.1,1887316.0,Iridoviridae,GV
+GCA_006449655.1,1380865.0,Unclassified Virus,GV
+GCA_006450455.1,216928.0,Iridoviridae,GV
+GCA_006450685.1,2023775.0,Unclassified Virus,GV
+GCA_006450755.1,575980.0,Unclassified Virus,GV
+GCA_006450775.1,2026840.0,Unclassified Virus,GV
+GCA_006451095.1,2077183.0,Ascoviridae,GV
+GCA_006451505.1,2044919.0,Iridoviridae,GV
+GCA_006451855.1,2219561.0,Iridoviridae,GV
+GCA_006451895.1,2219562.0,Iridoviridae,GV
+GCA_006457375.3,2487147.0,Iridoviridae,GV
+GCA_006457465.1,1419340.0,Iridoviridae,GV
+GCA_006457685.1,2501771.0,Iridoviridae,GV
+GCA_006457705.1,2501771.0,Iridoviridae,GV
+GCA_006458085.1,160691.0,Unclassified Virus,GV
+GCA_006458125.1,365144.0,Iridoviridae,GV
+GCA_006458485.1,380178.0,Unclassified Virus,GV
+GCA_006458705.1,1213990.0,Iridoviridae,GV
+GCA_006458785.1,263891.0,Iridoviridae,GV
+GCA_006465465.1,1398177.0,Iridoviridae,GV
+GCA_006465505.1,1213990.0,Iridoviridae,GV
+GCA_006466025.1,89464.0,Iridoviridae,GV
+GCA_006471825.1,1620702.0,Iridoviridae,GV
+GCA_006471845.1,1585660.0,Iridoviridae,GV
+GCA_006472065.1,265294.0,Iridoviridae,GV
+GCA_006472105.1,265294.0,Iridoviridae,GV
+GCA_006472125.1,265294.0,Iridoviridae,GV
+GCA_006472245.1,265294.0,Iridoviridae,GV
+GCA_006472285.1,265294.0,Iridoviridae,GV
+GCA_006472465.1,265294.0,Iridoviridae,GV
+GCA_007832555.1,10493.0,Unclassified Virus,GV
+GCA_007832595.1,10493.0,Unclassified Virus,GV
+GCA_007832635.1,10493.0,Unclassified Virus,GV
+GCA_007832695.1,265294.0,Iridoviridae,GV
+GCA_007832735.1,10493.0,Unclassified Virus,GV
+GCA_007832755.1,540070.0,Unclassified Virus,GV
+GCA_007832775.1,540070.0,Unclassified Virus,GV
+GCA_007833075.1,2849709.0,Unclassified Virus,GV
+GCA_007998635.1,10493.0,Unclassified Virus,GV
+GCA_007998775.1,10493.0,Unclassified Virus,GV
+GCA_007998815.1,10493.0,Unclassified Virus,GV
+GCA_007998895.1,10493.0,Unclassified Virus,GV
+GCA_007998915.1,10493.0,Unclassified Virus,GV
+GCA_010974705.1,373997.0,Phycodnaviridae,GV
+GCA_011559005.1,159183.0,Iridoviridae,GV
+GCA_011604415.1,2704071.0,Phycodnaviridae,GV
+GCA_011604425.1,2704074.0,Phycodnaviridae,GV
+GCA_011604435.1,2704072.0,Phycodnaviridae,GV
+GCA_013088635.1,871658.0,Unclassified Virus,GV
+GCA_013088675.1,84740.0,Unclassified Virus,GV
+GCA_013122635.1,176656.0,Unclassified Virus,GV
+GCA_013354225.1,10493.0,Unclassified Virus,GV
+GCA_014514305.1,100217.0,Unclassified Virus,GV
+GCA_016467525.1,2530040.0,Unclassified Virus,GV
+GCA_016583485.1,2530038.0,Unclassified Virus,GV
+GCA_017654225.1,160691.0,Unclassified Virus,GV
+GCA_018448625.1,2809695.0,Phycodnaviridae,GV
+GCA_018591055.1,2704413.0,Iridoviridae,GV
+GCA_023148555.1,2739681.0,Yaraviridae,GV
+GCA_027183835.1,10493.0,Unclassified Virus,GV
+GCA_027183865.1,10493.0,Unclassified Virus,GV
+GCA_029269695.1,176656.0,Unclassified Virus,GV
+GCA_031201865.1,2736690.0,Iridoviridae,GV
+GCA_031264575.1,2866054.0,Unclassified Virus,GV
+GCA_031264615.1,2866055.0,Unclassified Virus,GV
+GCA_036418385.1,10493.0,Unclassified Virus,GV
+GCA_036418395.1,10493.0,Unclassified Virus,GV
+GCA_038022575.1,176656.0,Unclassified Virus,GV
+GCA_038022865.1,1884660.0,Iridoviridae,GV
+GCA_003051185.1,1477405.0,Mimiviridae,GV
+GCA_006452155.1,1302812.0,Unclassified Virus,GV
+GCA_003051225.1,1477405.0,Mimiviridae,GV
+GCA_013187225.1,1477405.0,Mimiviridae,GV
+GCA_003333245.1,938083.0,Phycodnaviridae,GV
+GCA_000846905.1,262968.0,Iridoviridae,GV
+GCA_006457745.1,2501771.0,Iridoviridae,GV
+GCA_006465545.1,127569.0,Iridoviridae,GV
+GCA_006472165.1,265294.0,Iridoviridae,GV
+GCA_006472265.1,265294.0,Iridoviridae,GV
+GCA_007832975.1,540070.0,Unclassified Virus,GV
+GCA_007998735.1,10493.0,Unclassified Virus,GV
+GCA_007998835.1,10493.0,Unclassified Virus,GV
+GCA_013306605.1,160691.0,Unclassified Virus,GV
+GCA_013306665.1,160691.0,Unclassified Virus,GV
+GCA_014514345.1,100217.0,Unclassified Virus,GV
+GCA_014514415.1,100217.0,Unclassified Virus,GV
+GCA_027571825.1,262968.0,Iridoviridae,GV
+GCA_036418515.1,262968.0,Iridoviridae,GV
+GCA_036979605.1,10493.0,Unclassified Virus,GV
+GCA_006472305.1,265294.0,Iridoviridae,GV
+GCA_007833055.1,10493.0,Unclassified Virus,GV
+GCA_007998595.1,10493.0,Unclassified Virus,GV
+GCA_007998615.1,10493.0,Unclassified Virus,GV
+GCA_007998675.1,10493.0,Unclassified Virus,GV
+GCA_014514375.1,100217.0,Unclassified Virus,GV
+GCA_007998655.1,10493.0,Unclassified Virus,GV
+GCA_007998695.1,10493.0,Unclassified Virus,GV
+GCA_007998715.1,10493.0,Unclassified Virus,GV
+GCA_007998755.1,10493.0,Unclassified Virus,GV
+GCA_007998935.1,10493.0,Unclassified Virus,GV
+GCA_013122655.1,176656.0,Unclassified Virus,GV
+GCA_013306615.1,160691.0,Unclassified Virus,GV
+GCA_013306635.1,160691.0,Unclassified Virus,GV
+GCA_013306645.1,160691.0,Unclassified Virus,GV
+GCA_013306685.1,160691.0,Unclassified Virus,GV
+GCA_006472365.1,265294.0,Iridoviridae,GV
+GCA_006472525.1,265294.0,Iridoviridae,GV
+GCA_007832575.1,1398177.0,Iridoviridae,GV
+GCA_014514155.1,100217.0,Unclassified Virus,GV
+GCA_014514405.1,100217.0,Unclassified Virus,GV
+GCA_000865845.1,315953.0,Bicaudaviridae,GV
+GCA_002614085.1,1898549.0,Bicaudaviridae,GV
+GCA_002614105.1,1898550.0,Unknown,GV
+GCA_002833765.1,46020.0,Phycodnaviridae,GV
+GCA_002833805.1,51374.0,Phycodnaviridae,GV
+GCA_003333185.1,938083.0,Phycodnaviridae,GV
+GCA_000846105.1,285013.0,Unclassified Virus,GV
+GCA_000903055.1,1123964.0,Unclassified Virus,GV
+GCA_000917075.1,1351702.0,Fuselloviridae,GV
+GCA_001500815.1,1732178.0,Fuselloviridae,GV
+GCA_001551185.1,1732177.0,Fuselloviridae,GV
+GCA_001579395.1,1797140.0,Fuselloviridae,GV
+GCA_007832895.1,540070.0,Unclassified Virus,GV
+GCA_013306625.1,160691.0,Unclassified Virus,GV
+GCA_003051165.1,1477405.0,Mimiviridae,GV
+GCA_014514235.1,100217.0,Unclassified Virus,GV
+GCA_002826585.1,84739.0,Unclassified Virus,GV
+GCA_014514495.1,100217.0,Unclassified Virus,GV
+GCA_007998795.1,10493.0,Unclassified Virus,GV
+GCA_014514145.1,100217.0,Unclassified Virus,GV
+GCA_006457525.1,2494350.0,Iridoviridae,GV
+GCA_003333225.1,938083.0,Phycodnaviridae,GV
+GCA_018448615.1,2809695.0,Phycodnaviridae,GV
+GCA_001503855.1,1580591.0,Fuselloviridae,GV
+GCA_000893915.2,1094892.0,Mimiviridae,GV
+GCA_006472405.1,265294.0,Iridoviridae,GV
+GCA_006472325.1,265294.0,Iridoviridae,GV
+GCA_006450795.1,1380865.0,Unclassified Virus,GV
+GCA_007832995.1,540070.0,Unclassified Virus,GV
+GCA_006457885.1,265294.0,Iridoviridae,GV
+GCA_007832655.1,265294.0,Iridoviridae,GV
+GCA_007832675.1,265294.0,Iridoviridae,GV
+GCA_013306705.1,160691.0,Unclassified Virus,GV
+GCA_014514245.1,100217.0,Unclassified Virus,GV
+GCA_014514445.1,100217.0,Unclassified Virus,GV
+GCA_007833015.1,84739.0,Unclassified Virus,GV
+GCA_019176255.1,180170.0,Unclassified Virus,GV
+GCA_007998855.1,10493.0,Unclassified Virus,GV
+GCA_002827725.1,352209.0,Unclassified Virus,GV
+GCA_007832815.1,540070.0,Unclassified Virus,GV
+GCA_014514315.1,100217.0,Unclassified Virus,GV
+GCA_031310675.1,2923328.0,Mimiviridae,GV
+GCA_016811295.1,180170.0,Unclassified Virus,GV
+GCA_013187245.1,1477405.0,Mimiviridae,GV
+GCA_019176245.1,180170.0,Unclassified Virus,GV
+GCA_003051205.1,1477405.0,Mimiviridae,GV
+,,,Other
+GCA_000986845.1,1538547.0,Lokiarchaeota,Asgard
+GCA_001563325.1,1706445.0,Thorarchaeota,Asgard
+GCA_001563335.1,1706444.0,Thorarchaeota,Asgard
+GCA_001563465.1,1706443.0,Thorarchaeota,Asgard
+GCA_001940645.1,1841598.0,Heimdallarchaeota,Asgard
+GCA_001940655.1,1849166.0,Prometheoarchaeota,Asgard
+GCA_001940665.2,1841599.0,Odinarchaeota,Asgard
+GCA_001940705.1,1837170.0,Thorarchaeota,Asgard
+GCA_001940725.1,1841597.0,Heimdallarchaeota,Asgard
+GCA_001940755.1,1841596.0,Heimdallarchaeota,Asgard
+GCA_002728275.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_003144275.1,2012493.0,Heimdallarchaeota,Asgard
+GCA_003345545.1,2053491.0,Thorarchaeota,Asgard
+GCA_003345555.1,2053491.0,Thorarchaeota,Asgard
+GCA_003345595.1,2053491.0,Thorarchaeota,Asgard
+GCA_003662765.1,2053491.0,Thorarchaeota,Asgard
+GCA_003662775.1,2053491.0,Thorarchaeota,Asgard
+GCA_003662805.1,2053491.0,Thorarchaeota,Asgard
+GCA_003662815.1,2053491.0,Thorarchaeota,Asgard
+GCA_003662835.1,3067292.0,UnknownPhylum,Asgard
+GCA_003662865.1,3067280.0,Prometheoarchaeota,Asgard
+GCA_004375715.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004376265.1,2053491.0,Thorarchaeota,Asgard
+GCA_004376425.1,2053491.0,Thorarchaeota,Asgard
+GCA_004376455.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_004376705.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004376735.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_004524035.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524055.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524075.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524125.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_004524145.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524155.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524165.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524185.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524205.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524225.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524255.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524265.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524285.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524305.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524325.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524355.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524365.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524385.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524425.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524435.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524445.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524455.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524495.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524515.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524535.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524545.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524565.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524595.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524615.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524635.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524645.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524665.1,2053491.0,Thorarchaeota,Asgard
+GCA_004524685.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_004524705.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004524725.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_004525575.1,2053491.0,Thorarchaeota,Asgard
+GCA_004525645.1,2053491.0,Thorarchaeota,Asgard
+GCA_004526085.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_005222975.1,2012490.0,Lokiarchaeota,Asgard
+GCA_005223125.1,2012491.0,Lokiarchaeota,Asgard
+GCA_008080735.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_008080745.1,2053491.0,Thorarchaeota,Asgard
+GCA_008080755.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_008080765.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_011039435.1,2053491.0,Thorarchaeota,Asgard
+GCA_012798355.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_013138615.1,2053491.0,Thorarchaeota,Asgard
+GCA_013375355.1,2719382.0,UnknownPhylum,Asgard
+GCA_013375405.1,2719382.0,UnknownPhylum,Asgard
+GCA_013375455.1,2719382.0,UnknownPhylum,Asgard
+GCA_013375475.1,2053489.0,Helarchaeota,Asgard
+GCA_013375485.1,2053489.0,Helarchaeota,Asgard
+GCA_013375495.1,2053489.0,Helarchaeota,Asgard
+GCA_013388835.1,2053491.0,Thorarchaeota,Asgard
+GCA_014728035.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014728645.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014729055.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014729315.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014729825.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014730125.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014730165.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014730275.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014730295.1,2053489.0,Prometheoarchaeota,Asgard
+GCA_014730365.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_014859815.1,2053491.0,Thorarchaeota,Asgard
+GCA_016649575.1,2026747.0,Heimdallarchaeota,Asgard
+GCA_021513695.1,2876573.0,Heimdallarchaeota,Asgard
+GCA_021513715.1,2876572.0,Heimdallarchaeota,Asgard
+GCA_031322145.1,3019033.0,Pandoraviridae,GV
+GCA_900573915.1,2420051.0,Unknown,GV
+GCA_031308775.1,2919373.0,Iridoviridae,GV
+GCA_031319315.1,2971331.0,Iridoviridae,GV
+GCA_006451955.1,2219562.0,Iridoviridae,GV
+GCA_006457865.1,265294.0,Iridoviridae,GV
+GCA_007832715.1,265294.0,Iridoviridae,GV
+GCA_007832795.1,540070.0,Unclassified Virus,GV
+GCA_007832835.1,540070.0,Unclassified Virus,GV
+GCA_007832855.1,540070.0,Unclassified Virus,GV
+GCA_007832875.1,540070.0,Unclassified Virus,GV
+GCA_007832915.1,540070.0,Unclassified Virus,GV
+GCA_007832935.1,540070.0,Unclassified Virus,GV
+GCA_007832955.1,540070.0,Unclassified Virus,GV
+GCA_007998875.1,10493.0,Unclassified Virus,GV
+GCA_014514205.1,100217.0,Unclassified Virus,GV
+GCA_014514255.1,100217.0,Unclassified Virus,GV
+GCA_014514525.1,100217.0,Unclassified Virus,GV
+GCA_024723245.1,176656.0,Unclassified Virus,GV
+GCA_031281425.1,2890915.0,Iridoviridae,GV
+GCA_031320165.1,2981708.0,Iridoviridae,GV
+GCA_031322225.1,3021636.0,Iridoviridae,GV
+GCA_038022855.1,1884660.0,Iridoviridae,GV
+GCA_006472485.1,265294.0,Iridoviridae,GV
+GCA_002827625.1,46019.0,Phycodnaviridae,GV
