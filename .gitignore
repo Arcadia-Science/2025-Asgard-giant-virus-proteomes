@@ -164,3 +164,4 @@ config.prod.json
 # genome_assembly_taxonomy_list.csv # This is likely small enough to track
 
 
+proteome_database_v3.5.csv
