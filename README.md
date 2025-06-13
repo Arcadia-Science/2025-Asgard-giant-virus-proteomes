@@ -6,11 +6,9 @@
 
 This repository contains the scripts and analysis notebooks used to construct and analyze a deeply annotated  proteome database for Asgard archaea and Giant Viruses (GV, or NCLDV). The primary motivation is to leverage integrated functional, topological, localization, and structural context predictions, alongside homology searches, to:
 
-Characterize the boundaries of sequence divergence with respect to conservation of structure and function.
+Facilitate novel discovery into generalizable "rules" of protein sequence/structure/function relationships.
 
 Identify and prioritize structurally uncharacterized proteins for future study.
-
-Facilitate novel discovery into protein sequence/structure/function relationships
 
 Identify orthologous groups relevant to the evolutionary relationships between Asgard archaea and eukaryotes (detailed phylogenetic analysis is part of a parallel project).
 
@@ -42,19 +40,19 @@ conda env export --no-builds > envs/dev.yml
 
 ## Input Data:
 
-Source Proteomes: FASTA files for Asgard archaea (311 genomes), Giant Viruses (451 genomes), Eukaryotes (63 genomes), TACK/Euryarchaeota (outgroups). (Specify source/accessions or deposition if applicable).
+Source Proteomes: FASTA files for Asgard archaea (311 proteomes), Giant Viruses (446 proteomes), Eukaryotes (63 proteomes), TACK/Euryarchaeota (outgroups). Accessions at data/reference/genome_assembly_list.csv.
 
 Reference Data: interpro_entry.list (from InterPro), UniProtKB/RefSeq data used implicitly by tools, AFDB_seq_db, PDB_seq_db
 
-Mapping Files: mapping_parquet_proteinid_to_uniprotkb_or_upi.tsv.
+Mapping Files: integrated_asgard_gv_ortho_interpro.parquet.
 
 ## Intermediate Data:
 
-Filtered FASTA files (e.g., Asgard_all_globular_proteins.fasta).
+Filtered FASTA files (e.g., data/input/filtered_fastas.Asgard_all_globular_proteins.fasta).
 
-OrthoFinder output directories (e.g., data/Asgard_Orthofinder_Results, data/GV_Orthofinder_Results).
+OrthoFinder output directories (e.g., data/orthofinder_results_Asgard_Orthofinder_Results, data/orthofinder_results/GV_Orthofinder_Results).
 
-InterProScan output directories (TSV, GFF3, e.g., InterProScan_Results/Asgard_annotated_nr90/, InterProScan_Results/unknowns_scan/).
+InterProScan output directories (TSV, GFF3, e.g., data/interproscan_result_files/Asgard_annotated_nr90.tsv, ).
 
 USPNet intermediate/output directories (eg. USPNet_Processed_Data*/results.csv).
 
@@ -70,9 +68,7 @@ Extracted sequence/ID lists (e.g., unique_virus_names.txt, afesm_esm_only_unipro
 
 ## Primary Output Data:
 
-proteome_database_vX.Y.csv: Iterative versions of the main integrated database. Latest version contains comprehensive annotations.
-
-all_filtered_out_proteins_vX.Y.csv: Processed versions of proteins initially filtered based on PDB/AFDB hits.
+proteome_database_v3.5.csv: Latest versions of the main integrated database. 
 
 output_plots/: Directory containing generated figures from analysis notebooks.
 
@@ -87,9 +83,9 @@ Zenodo (tbd)
 
 ### Methods
 
-Data Acquisition & Preparation: Downloaded source proteomes (Asgard: 311, GV: 451). Filtered proteomes for length (80-1000 aa) and predicted globularity (Metapredict). Generated custom FASTA headers.
+Data Acquisition & Preparation: Downloaded source proteomes (Asgard: 311, GV: 451) from NCBI. Filtered proteomes for length (80-1000 aa) and predicted globularity (Metapredict). Generated custom FASTA headers.
 
-Orthology Inference: Ran OrthoFinder (via tack_analysis_env Docker image) separately on the filtered Asgard and GV proteomes to assign proteins to Orthogroups (OGs).
+Orthology Inference: Ran OrthoFinder (via custom Docker image) separately on the filtered Asgard and GV proteomes to assign proteins to Orthogroups (OGs).
 
 Functional Annotation (InterProScan):
 
@@ -97,51 +93,35 @@ Ran InterProScan (v5.73-104.0 via Docker) iteratively. Initially on nr90 subsets
 
 Custom Functional Categorization: Developed and applied a rule-based Python script (add_specific_category_IPR_v10.py) using specific IPR IDs, keywords (in IPR names/source annotations), and IPR type fallback to assign Specific_Functional_Category and Category_Trigger.
 
-Taxonomy Refinement: Fetched NCBI TaxIDs via Entrez; parsed Asgard Phylum, Virus Name; assigned Virus Family via keyword matching.
+Taxonomy Refinement: Fetched NCBI TaxIDs via Entrez; parsed Asgard Phylum, Virus Name; assigned Virus Family via custom keyword matching.
 
 Sequence Feature Prediction:
 
-Ran USPNet locally (Python env tack_env_x86 / asgard_gv_env) to predict signal peptides (Signal_Peptide_USPNet, SP_Cleavage_Site_USPNet).
+Ran USPNet locally to predict signal peptides and infer likely localization (Signal_Peptide_USPNet, SP_Cleavage_Site_USPNet).
 
-Ran DeepTMHMM via Docker on AWS EC2 to predict transmembrane topology (Status: Needs re-run/debug).
+Ran Metapredict locally via add_disorder.py script to calculate Percent_Disorder.
 
-Ran Metapredict locally (Python env asgard_gv_env) via add_disorder.py script to calculate Percent_Disorder.
-
-Database Integration: Merged all annotations and metadata into CSV files using Python/pandas scripts. Generated Mature_Protein_Sequence, Predicted_Subcellular_Localization, Original_Seq_Length, Mature_Seq_Length. Mapped UniProtKB_AC. Processed both the main dataset and the initially filtered-out set.
+Database Integration: Iteratively merged all annotations and metadata into the proteome_database CSV using the database_assembly.ipynb notebook. 
 
 Homology Searching & Structural Context:
 
 Processed previous search results (results_vs_pdb_v2.m8, afdb_found_uniprot_acs_or_upi.csv) to flag proteins with PDB/AFDB hits (Has_Known_Structure).
 
-Performed screen against AFESM "ESM-only" clusters using UniProt IDs.
-
-Running MMseqs2 search against MGnify database on AWS EC2 (Status: Running).
+Performed screen against AFESM "ESM-only" clusters using UniProt IDs. The AFESM "ESM-only" clusters were derived from database associated with "Metagenomic-scale analysis of the predicted protein structure universe; https://doi.org/10.1101/2025.04.23.650224". First, we ran all Structurally Dark proteins on an MMseqs2 search against the MGnify database, to identify MGnify clusters these proteins fall into. Then, we searched these against the AFESM "ESM-only" clusters, to determine if any of the Structurall Dark proteins were in the ESMAtlas.
 
 Exploratory Data Analysis: Used Jupyter notebooks (notebooks/) with Python (pandas, matplotlib, seaborn, arcadia-pycolor) to analyze dataset composition, sequence features, functional annotations, and intra-OG sequence divergence.
 
-(Note: Detailed phylogenetic tree inference is being conducted as part of a separate, parallel project.)
-
-
-> Example:
->
-> 1.  Download scripts using `download.ipynb`.
-> 2.  Preprocess using `./preprocessing.sh -a data/`
-> 3.  Run Snakemake pipeline `snakemake --snakefile Snakefile`
-> 4.  Generate figures using `pub/make_figures.ipynb`.
-
 ### Compute Specifications
 
-Local: Apple MacBook Pro M3 Max, 36 GB RAM (Used for scripting, USPNet, Metapredict, initial InterProScan runs, data analysis, Git management).
+Local: Apple MacBook Pro M3 Max, 36 GB RAM (Used for scripting, USPNet, Metapredict, InterProScan runs, data analysis, Git management).
 
 Cloud (AWS EC2):
-
-m6a.24xlarge (96 vCPU, 384 GiB RAM): Used for DeepTMHMM run attempt.
 
 r6i.16xlarge (64 vCPU, 512 GiB RAM): Used for MGnify database indexing and MMseqs2 search.
 
 Operating System (EC2): Amazon Linux 2
 
-Key Software: Python 3.9 (via Conda/Mamba), Pandas, NumPy, Matplotlib, Seaborn, Biopython, MMseqs2 (v17+), InterProScan (v5.73-104.0 via Docker), DeepTMHMM (via Docker), USPNet (local install), Metapredict, OrthoFinder, Docker, AWS CLI, CD-HIT, Git.
+Key Software: Python 3.9 (via Conda/Mamba), Pandas, NumPy, Matplotlib, Seaborn, Biopython, MMseqs2 (v17+), InterProScan (v5.73-104.0 via Docker), USPNet (local install), Metapredict, OrthoFinder, Docker, AWS CLI, CD-HIT, Git.
 
 ## Contributing
 
@@ -154,9 +134,6 @@ This section contains information for developers who are working off of this tem
 
 ### GitHub templates
 This template uses GitHub templates to provide checklists when making new pull requests. These templates are stored in the [.github/](./.github/) directory.
-
-### VSCode
-This template includes recommendations to VSCode users for extensions, particularly the `ruff` linter. These recommendations are stored in `.vscode/extensions.json`. When you open the repository in VSCode, you should see a prompt to install the recommended extensions.
 
 ### `.gitignore`
 This template uses a `.gitignore` file to prevent certain files from being committed to the repository.
