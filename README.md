@@ -42,7 +42,7 @@ conda env export --no-builds > envs/dev.yml
 
 Source Proteomes: FASTA files for Asgard archaea (311 proteomes), Giant Viruses (446 proteomes), Eukaryotes (63 proteomes), TACK/Euryarchaeota (outgroups). Accessions at data/reference/genome_assembly_list.csv.
 
-Reference Data: interpro_entry.list (from InterPro), UniProtKB/RefSeq data used implicitly by tools, AFDB_seq_db, PDB_seq_db
+Reference Data: interpro_entry.txt (from InterPro), UniProtKB/RefSeq data used implicitly by tools, AFDB_seq_db, PDB_seq_db
 
 Mapping Files: integrated_asgard_gv_ortho_interpro.parquet.
 
