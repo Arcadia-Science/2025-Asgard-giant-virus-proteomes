@@ -107,13 +107,13 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("-i", "--input_dir", required=True, type=Path,
                         help="Input directory containing FASTA files.")
     parser.add_argument("-o", "--output_dir", required=True, type=Path,
-                        help="Output directory for aligned files (.aln).")
+                        help="Output directory for aligned files.")
     parser.add_argument("-l", "--log_dir", required=True, type=Path,
                         help="Output directory for MAFFT stderr logs (.log).")
-    parser.add_argument("--input_suffix", default="_final.fasta",
-                        help="Suffix of input FASTA files to process.")
-    parser.add_argument("--output_suffix", default="_final.aln",
-                        help="Suffix to use for output alignment files.")
+    parser.add_argument("--input_suffix", default=".fasta",
+                        help="Suffix of input FASTA files to process (e.g., '.fasta', '_sequences.fa').")
+    parser.add_argument("--output_suffix", default=".mafft.fa",
+                        help="Suffix to use for output alignment files (default: .mafft.fa, for FastTree compatibility).")
     parser.add_argument("--mafft_exe", default="mafft",
                         help="Path to the MAFFT executable.")
     parser.add_argument("--mafft_args", default="--auto --thread 1",
