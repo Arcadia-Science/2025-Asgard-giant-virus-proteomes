@@ -4,7 +4,9 @@
 # v1.1 - Updated based on predict_fast.py script analysis.
 
 # Exit immediately if a command exits with a non-zero status.
-set -e
+# Treat unset variables as an error when substituting.
+# Prevent errors in a pipeline from being masked.
+set -euo pipefail
 
 # --- Default Configuration ---
 DEFAULT_INPUT_FASTA="all_proteins_for_dtm.fasta"
