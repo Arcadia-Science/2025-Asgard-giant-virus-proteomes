@@ -235,6 +235,7 @@ dependencies:
   - tk=8.6.13
   - tomli=2.2.1
   - tornado=6.4.2
+  - tqdm>=4.60.0
   - traitlets=5.14.3
   - types-python-dateutil=2.9.0.20241206
   - typing-extensions=4.13.2

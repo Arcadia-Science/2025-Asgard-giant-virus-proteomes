@@ -351,7 +351,6 @@ This workflow provides a comprehensive guide. Remember to adapt file paths, name
 
 ### Description of the folder structure
 
-
 ### Methods
 
 Data Acquisition & Preparation: Downloaded source proteomes (Asgard: 311, GV: 451) from NCBI. Filtered proteomes for length (80-1000 aa) and predicted globularity (Metapredict). Generated custom FASTA headers.
