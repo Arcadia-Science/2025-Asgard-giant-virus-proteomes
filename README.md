@@ -23,7 +23,7 @@ conda activate asgard_gv_env
 
 The `envs/dev.yml` file contains the list of dependencies for the primary Conda environment. Ensure this file is kept up-to-date as new dependencies are added (see below).
 
-For specific tools like DeepTMHMM and USPNet, separate environments or setups (e.g., Docker, specific Python versions) may be required. For USPNet, refer to its repository for installation instructions: [ml4bio/USPNet](https://github.com/ml4bio/USPNet).
+For USPNet, refer to its repository for installation instructions: [ml4bio/USPNet](https://github.com/ml4bio/USPNet).
 
 Install your pre-commit hooks:
 
@@ -40,31 +40,33 @@ conda env export --no-builds > envs/dev.yml
 
 ## Data
 
+## Reference Data: 
+
+interpro_entry.txt (from InterPro), genome_assembly_taxonomy_list.csv, eukaryotic_species_taxonomy.csv, afdb_protein_confidence_scores.csv
+
 ## Input Data:
 
 Source Proteomes: FASTA files for Asgard archaea (311 proteomes), Giant Viruses (446 proteomes), Eukaryotes (63 proteomes), TACK/Euryarchaeota (outgroups). Accessions at data/reference/genome_assembly_list.csv.
 
-Reference Data: interpro_entry.txt (from InterPro), UniProtKB/RefSeq data used implicitly by tools, AFDB_seq_db, PDB_seq_db
-
-Mapping Files: integrated_asgard_gv_ortho_interpro.parquet.
-
 ## Intermediate Data:
+
+Many of these files are large, and are stored in a Zenodo repository (DOI: xxxx)
 
 Filtered FASTA files (e.g., data/input/filtered_fastas.Asgard_all_globular_proteins.fasta).
 
-OrthoFinder output directories (e.g., data/orthofinder_results_Asgard_Orthofinder_Results, data/orthofinder_results/GV_Orthofinder_Results).
+OrthoFinder output files.
 
-InterProScan output directories (TSV, GFF3, e.g., data/interproscan_result_files/Asgard_annotated_nr90.tsv, ).
+InterProScan output mapping (integrated_asgard_gv_ortho_interpro.parquet).
+
+Mapping Files: integrated_asgard_gv_ortho_interpro.parquet.
 
 USPNet intermediate/output directories (eg. USPNet_Processed_Data*/results.csv).
 
-AlphaFold DB search files: afdb_found_uniprot_acs_or_upi.csv
-
-MMseqs2 database indices (e.g., MGnify_DB/).
-
-MMseqs2 search results (results_vs_mgnify.m8).
+MMseqs2 search results: results_vs_mgnify_ESMA.m8.
 
 PDB sequence homology Search Results: results_vs_pdb_v2.m8.
+
+AFDB mapping results: afdb_found_uniprot_acs_or_upi.csv
 
 Extracted sequence/ID lists (e.g., unique_virus_names.txt, afesm_esm_only_uniprot_ids.txt).
 
@@ -120,43 +122,34 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Example:
         python scripts/run_metapredict_filter.py \
             -i data/processed_fastas/step2_len_filtered/ \
-            -g data/processed_fastas/step3_globular_filtered/ \
-            -x data/processed_fastas/step3_skipped_X.fasta \
-            -d data/processed_fastas/step3_disordered.fasta \
-            -t 0.5 
+            -o data/processed_fastas/step3_globular_filtered/ \
         ```
     *   Input: Directory of FASTA files (e.g., from step 2).
     *   Output: 
         *   Directory `step3_globular_filtered/` with FASTA files of predicted globular proteins.
-        *   `step3_skipped_X.fasta` for sequences with 'X' amino acids.
-        *   `step3_disordered.fasta` for predicted disordered sequences.
+        *   `skipped_X.fasta` for sequences with 'X' amino acids.
+        *   `sdisordered.fasta` for predicted disordered sequences.
     *   *Use `data/processed_fastas/step3_globular_filtered/` for subsequent steps if selecting for globular proteins.*
 
-4.  **Concatenate and/or filter by keywords (optional, example for hypotheticals):**
+4.  **Concatenate**
     *   This script can be used to create specific subsets, e.g., all hypothetical proteins for InterProScan.
     *   Script: `scripts/cat_filter_fastas.py`
     *   Example (extracting hypotheticals from globular proteins):
         python scripts/cat_filter_fastas.py \
             -i data/processed_fastas/step3_globular_filtered/ \
             -c data/processed_fastas/all_globular_concat.fasta \
-            -f data/processed_fastas/hypothetical_globular_subset.fasta \
-            --keywords hypothetical uncharacterized "unknown function" \
-            --name_index 4 # Adjust if your standardized headers have annotation at a different field
-        ```
     *   Input: Directory of FASTA files.
-    *   Output: A concatenated FASTA and a filtered FASTA subset.
+    *   Output: A concatenated FASTA .
 
 ---
-**Phase 2: Orthology Analysis (using external OrthoFinder)**
+**Phase 2: Orthology Analysis (using OrthoFinder docker image)**
 ---
 
 5. **Run OrthoFinder:**
     *   This step uses the OrthoFinder tool, which is external to this script suite.
     *   Input to OrthoFinder would typically be the processed, filtered FASTA files (one per species/genome), e.g., from `data/processed_fastas/step3_globular_filtered/` or a non-redundant set like `all_globular_nr90.fasta` if analyzing a single combined proteome.
     *   Example:
-        orthofinder -f data/processed_fastas/step3_globular_filtered/ -t 16 -o data/orthofinder_results/
-        # Or using the Docker image mentioned in the main README
-        # docker run --rm -v /path/to/data:/data davidemms/orthofinder orthofinder -f /data/processed_fastas/step3_globular_filtered/ -t 16 -o /data/orthofinder_results/
+        docker run --rm -v /path/to/data:/data davidemms/orthofinder orthofinder -f /data/processed_fastas/step3_globular_filtered/ -t 16 -o /data/orthofinder_results/
         ```
 
 6. **Analyze OrthoFinder results:**
@@ -174,7 +167,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Output: TSV files with OG statistics, lists of conserved OGs, summary text file, and plots.
 
 ---
-**Phase 3: Homology Search & Outgroup Selection**
+**Phase 3: Eukaryotic Homology Search **
 ---
 
 7.  **Run DIAMOND homology search:**
@@ -184,43 +177,25 @@ This section outlines a potential workflow for using the scripts in the `scripts
         bash scripts/run_diamond_loop.sh \
             -i data/processed_fastas/step3_globular_filtered/ \
             -o data/diamond_results/ \
-            -d path/to/your/uniref100.dmnd \
+            -d path/to/your/db.dmnd \
             -t 16 \
             -m 5 \
-            -p "*.fasta" # Adjust pattern if your files from step3 have a different extension
+            -p "*.fasta" 
         ```
     *   Input: Directory of FASTA files (one per genome/proteome).
     *   Output: Directory with DIAMOND search result files (TSV format), one per input FASTA.
-
-8.  **Select outgroups from DIAMOND results (if needed for phylogenies):**
-    *   This script processes DIAMOND results (e.g., against TACK/Euryarchaeota) to pick outgroups for OGs.
-    *   *This step often requires DIAMOND searches of OG sequences against a database containing potential outgroups, which is not explicitly generated by `run_diamond_loop.sh` in the example above. Assume you have such DIAMOND results per OG.*
-    *   Script: `scripts/select_outgroups_from_diamond.py`
-    *   Example:
-        python scripts/select_outgroups_from_diamond.py \
-            -i data/diamond_og_vs_outgroups_db_results/ \
-            -o data/outgroup_selection/selected_outgroups.csv \
-            --pattern "OG*_hits.tsv" \
-            --evalue 1e-10 \
-            --min_cov 0.5 \
-            --max_outgroups 3
-        ```
-    *   Input: Directory of DIAMOND TSV files, where each file contains hits for one OG.
-    *   Output: A CSV file listing selected outgroup sequence IDs for each OG.
 
 ---
 **Phase 4: Functional Annotation & ID Mapping**
 ---
 
-9.  **Run InterProScan for functional annotation:**
-    *   Typically run on a comprehensive, non-redundant set of proteins.
+8.  **Run InterProScan for functional annotation:**
+    *   Ensure Interproscan and all necessary files are properly installed locally
     *   Script: `scripts/run_interproscan.sh`
-    *   Example (using the nr90 set from CD-HIT):
-        # Ensure interproscan.properties is configured correctly, especially bin.directory
-        # and java.command if not in PATH.
+    *   Example :
         # The script passes arguments directly to InterProScan's interproscan.sh
         bash scripts/run_interproscan.sh \
-            -i data/processed_fastas/all_globular_nr90.fasta \
+            -i data/processed_fastas/Asgard_all_globular_proteins.fasta \
             -d data/interproscan_results/ \
             -f TSV,GFF3 \
             -goterms \
@@ -231,7 +206,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: A FASTA file of proteins to annotate.
     *   Output: Directory with InterProScan results (TSV, GFF3, XML, etc.).
 
-10.  **Predict signal peptides (USPNet):**
+9.  **Predict signal peptides (USPNet):**
     *   Script: `scripts/run_uspnet.sh`
     *   Example (using a concatenated FASTA of all proteins of interest):
         # Ensure all_proteins_for_uspnet.fasta is prepared
@@ -243,7 +218,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: A single FASTA file.
     *   Output: CSV file with predictions inside the processed data directory (e.g., `USPNet_Intermediate_Data/results.csv`).
 
-11. **Fetch pLDDT scores from AlphaFold DB:**
+10. **Fetch pLDDT scores from AlphaFold DB:**
     *   Requires a CSV input mapping your protein IDs to UniProt ACs or UPIs.
     *   Script: `scripts/fetch_plddt.py`
     *   Example:
@@ -257,7 +232,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: CSV file with protein IDs and AFDB queryable IDs.
     *   Output: CSV file with protein IDs and their average pLDDT scores.
 
-12. **Map UniProtKB ACs to PDB IDs:**
+11. **Map UniProtKB ACs to PDB IDs:**
     *   Script: `scripts/uniprot_pdb_search.py`
     *   Example:
         # Create a file with one UniProtKB AC per line
@@ -270,25 +245,11 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: Text file with UniProtKB Accessions.
     *   Output: TSV file mapping UniProtKB ACs to PDB IDs.
 
-13. **Map various protein IDs to UniParc IDs:**
-    *   Useful for IDs not found in UniProtKB.
-    *   Script: `scripts/uniparc_search.py`
-    *   Example:
-        # Create a file with one protein ID (e.g., RefSeq) per line
-        # e.g., data/other_ids_for_uniparc_search.txt
-        python scripts/uniparc_search.py \
-            -i data/other_ids_for_uniparc_search.txt \
-            -o data/uniparc_mapping/ \
-            --output_prefix other_ids 
-        ```
-    *   Input: Text file with protein IDs.
-    *   Output: Directory with a TSV mapping, a list of not found IDs, and an error log.
-
 ---
 **Phase 5: Downstream Analyses on Orthogroups**
 ---
 
-14. **Extract sequences for specific OGs:**
+13. **Extract sequences for specific OGs:**
     *   Script: `scripts/extract_sequences_by_id.py`
     *   This script needs a "reference FASTA" containing all sequences and "hit files" listing IDs per OG.
     *   The reference FASTA could be `data/processed_fastas/all_globular_concat.fasta`.
@@ -304,7 +265,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: Reference FASTA, directory of ID list files.
     *   Output: Directory with FASTA files, one per input ID list (per OG).
 
-15. **Align sequences within OGs (MAFFT):**
+14. **Align sequences within OGs (MAFFT):**
     *   Script: `scripts/run_mafft_parallel.py`
     *   Example:
         python scripts/run_mafft_parallel.py \
@@ -318,7 +279,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: Directory of per-OG FASTA files (e.g., from step 15).
     *   Output: Directory of aligned FASTA files (e.g., `OG123.mafft.fa`). Per-job logs.
 
-16. **Build phylogenetic trees from alignments (FastTree):**
+15. **Build phylogenetic trees from alignments (FastTree):**
     *   Script: `scripts/run_fasttree_parallel.py`
     *   Example:
         python scripts/run_fasttree_parallel.py \
@@ -332,7 +293,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: Directory of aligned FASTA files (e.g., from step 16).
     *   Output: Directory of tree files (Newick format). Per-job logs.
 
-17. **Perform Hill diversity analysis (example):**
+16. **Perform Hill diversity analysis (example):**
     *   Requires an input CSV where rows are OGs and columns are features (e.g., domain counts per OG). This CSV would need to be generated from other data (e.g., InterProScan results merged with OG assignments).
     *   Script: `scripts/hill_diversity_analysis.py`
     *   Example (assuming `og_domain_counts.csv` is prepared):
