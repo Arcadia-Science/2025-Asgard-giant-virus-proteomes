@@ -320,7 +320,7 @@ Orthology Inference: Ran OrthoFinder separately on the filtered Asgard and GV pr
 
 Functional Annotation (InterProScan):
 
-Ran InterProScan (v5.73-104.0 via Docker) iteratively. Initially on nr90 subsets (created via cd-hit -c 0.90), then on proteins initially lacking hits to maximize coverage. Used a curated application list (Pfam, CDD, Gene3D, SUPERFAMILY, SMART, ProSitePatterns, ProSiteProfiles) and requested GO terms/pathways. Managed memory via modified interproscan.sh.
+Ran InterProScan (v5.73-104.0 via Docker) iteratively. Initially on nr90 subsets (created via cd-hit -c 0.90), then on proteins initially lacking hits to maximize coverage - so ultimately ran on all proteins in the dataset. Used a curated application list (Pfam, CDD, Gene3D, SUPERFAMILY, SMART, ProSitePatterns, ProSiteProfiles) and requested GO terms/pathways. Managed memory via modified interproscan.sh.
 
 Custom Functional Categorization: Developed and applied a rule-based Python script (add_specific_category_IPR_v10.py) using specific IPR IDs, keywords (in IPR names/source annotations), and IPR type fallback to assign Specific_Functional_Category and Category_Trigger.
 
