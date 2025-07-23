@@ -12,6 +12,12 @@ Identify and prioritize structurally uncharacterized proteins for future study.
 
 Identify orthologous groups relevant to the evolutionary relationships between Asgard archaea and eukaryotes (detailed phylogenetic analysis is part of a parallel project).
 
+### Data Availability
+
+The large data files required to run this workflow (e.g., raw proteomes, DIAMOND databases, and large intermediate files) are not stored in this Git repository. They are permanently archived and publicly available on Zenodo.
+
+**To run the analysis, please first download the data from Zenodo [INSERT ZENODO DOI LINK HERE] and place the contents into the corresponding subdirectories within the `data/` folder.**
+
 ### Project Structure
 
 This repository is organized into the following directories:
