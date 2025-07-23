@@ -12,6 +12,20 @@ Identify and prioritize structurally uncharacterized proteins for future study.
 
 Identify orthologous groups relevant to the evolutionary relationships between Asgard archaea and eukaryotes (detailed phylogenetic analysis is part of a parallel project).
 
+### Project Structure
+
+This repository is organized into the following directories:
+
+-   **/data**: Contains all data files, organized by status.
+    -   `input/`: Raw and primary input data files.
+    -   `intermediate/`: Files generated during intermediate processing steps.
+    -   `output/`: Final data outputs, such as analysis results and summary tables.
+    -   `reference/`: Reference files like taxonomies or domain information.
+-   **/envs**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
+-   **/notebooks**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results. The primary notebook for this publication is `Consolidated_Publication_Notebook.ipynb`.
+-   **/scripts**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
+    -   `utils/`: Contains helper scripts for generic data pre-processing tasks, such as filtering FASTA files and formatting headers.
+
 ## Installation and Setup
 
 This repository uses conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda here. After installing conda and mamba, run the following command to create the primary pipeline run environment used for most analyses. Note: Specific tools like DeepTMHMM and USPNet required separate environments/setups (Docker, specific Python versions).

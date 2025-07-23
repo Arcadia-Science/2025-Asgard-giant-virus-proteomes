@@ -1,58 +1,88 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import argparse  # ADDED: Import argparse
+import argparse
+import logging
+
+# --- Setup Logging ---
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 def hill_diversity(p, q):
-    """Calculates Hill diversity."""
+    """
+    Calculates Hill diversity for a given probability vector p and order q.
+    """
+    # Filter out zero probabilities to avoid issues with log(0)
     p = p[p > 0]
     if q == 1:
+        # Special case for q=1, which is the exponential of Shannon entropy
         return np.exp(-np.sum(p * np.log(p)))
     else:
         return np.sum(p**q)**(1/(1-q))
 
 def main():
-    # ADDED: Set up argument parser
-    parser = argparse.ArgumentParser(description="Calculate and plot Hill diversity from orthogroup data.")
-    parser.add_argument("-i", "--input", required=True, help="Path to the input orthogroup diversity metrics CSV file.")
-    parser.add_argument("-o", "--output", required=True, help="Path to save the output plot PNG file.")
+    """
+    Main function to calculate Hill diversity metrics from orthogroup data
+    and save the results to a CSV file.
+    """
+    parser = argparse.ArgumentParser(
+        description="Calculate Hill diversity from orthogroup domain abundance data."
+    )
+    parser.add_argument(
+        "-i", "--input",
+        required=True,
+        help="Path to the input CSV file. Expects Orthogroups as rows and domain/species counts as columns."
+    )
+    parser.add_argument(
+        "-o", "--output",
+        required=True,
+        help="Path to save the output CSV file containing calculated diversity metrics."
+    )
     args = parser.parse_args()
 
-    # MODIFIED: Use the input file from command-line arguments
-    df = pd.read_csv(args.input)
+    logging.info(f"Reading input data from: {args.input}")
+    try:
+        df = pd.read_csv(args.input)
+        # Assume the first column is the orthogroup identifier
+        df = df.set_index(df.columns[0])
+    except FileNotFoundError:
+        logging.error(f"Input file not found: {args.input}")
+        return
+    except Exception as e:
+        logging.error(f"Error reading input file: {e}")
+        return
 
+    # Define the range of q values for the diversity profile
     q_values = np.linspace(0, 3, 50)
     results = []
 
-    for index, row in df.iterrows():
-        proportions = row.values[1:] / np.sum(row.values[1:])
+    logging.info(f"Calculating Hill diversity for {len(df)} orthogroups...")
+    for orthogroup, row in df.iterrows():
+        # Convert counts to proportions
+        total_count = np.sum(row.values)
+        if total_count == 0:
+            continue # Skip orthogroups with no domains/species
+        
+        proportions = row.values / total_count
+        
         for q in q_values:
             diversity = hill_diversity(proportions, q)
             results.append({
-                'Orthogroup': row['Orthogroup'],
+                'Orthogroup': orthogroup,
                 'q': q,
                 'Diversity': diversity
             })
 
+    if not results:
+        logging.warning("No diversity results were calculated. Check input data.")
+        return
+
     results_df = pd.DataFrame(results)
 
-    # Plotting
-    plt.style.use('seaborn-v0_8-whitegrid')
-    fig, ax = plt.subplots(figsize=(12, 8))
-
-    sns.lineplot(data=results_df, x='q', y='Diversity', hue='Orthogroup', ax=ax, palette="viridis")
-
-    ax.set_title('Hill Diversity of Eukaryotic Domains in Orthogroups', fontsize=16)
-    ax.set_xlabel('Order q', fontsize=12)
-    ax.set_ylabel('Diversity (Effective Number of Domains)', fontsize=12)
-    ax.legend(title='Orthogroup', bbox_to_anchor=(1.05, 1), loc='upper left')
-
-    plt.tight_layout()
-    
-    # MODIFIED: Save the plot to the specified output file
-    plt.savefig(args.output, dpi=300)
-    print(f"Plot saved to {args.output}")
+    logging.info(f"Saving diversity metrics to: {args.output}")
+    try:
+        results_df.to_csv(args.output, index=False, float_format='%.5f')
+        logging.info("Analysis complete.")
+    except IOError as e:
+        logging.error(f"Failed to write output file: {e}")
 
 if __name__ == '__main__':
     main()
