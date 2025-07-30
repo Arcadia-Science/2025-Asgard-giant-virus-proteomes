@@ -1,0 +1,13 @@
+authors:
+- name: Stephen A. Goldstein
+  orcid: 0000-0002-9397-1097
+  roles:
+  - Conceptualization
+  - Data Curation
+  - Formal Analysis
+  - Software
+  - Visualization
+- name: David G. Mets
+  orcid: 0000-0002-0803-0912
+  roles:
+  - Supervision
