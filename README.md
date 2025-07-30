@@ -6,17 +6,15 @@
 
 This repository contains the scripts and analysis notebooks used to construct and analyze a deeply annotated  proteome database for Asgard archaea and Giant Viruses (GV, or NCLDV). The primary motivation is to leverage integrated functional, topological, localization, and structural context predictions, alongside homology searches, to:
 
-Facilitate novel discovery into generalizable "rules" of protein sequence/structure/function relationships.
-
-Identify and prioritize structurally uncharacterized proteins for future study.
-
-Identify orthologous groups relevant to the evolutionary relationships between Asgard archaea and eukaryotes (detailed phylogenetic analysis is part of a parallel project).
+- Facilitate novel discovery into generalizable "rules" of protein sequence/structure/function relationships.
+- Identify and prioritize structurally uncharacterized proteins for future study.
+- Identify orthologous groups relevant to the evolutionary relationships between Asgard archaea and eukaryotes (detailed phylogenetic analysis is part of a parallel project).
 
 ### Data Availability
 
 The large data files required to run this workflow (e.g., raw proteomes, DIAMOND databases, and large intermediate files) are not stored in this Git repository. They are permanently archived and publicly available on Zenodo.
 
-**To run the analysis, please first download the data from Zenodo [INSERT ZENODO DOI LINK HERE] and place the contents into the corresponding subdirectories within the `data/` folder.**
+**To run the analysis, please first download the data from Zenodo [INSERT ZENODO DOI LINK HERE] and place the contents into the corresponding subdirectories within the `data/` folder in this repository.**
 
 ### Project Structure
 
@@ -46,67 +44,44 @@ The `envs/dev.yml` file contains the list of dependencies for the primary Conda 
 
 For USPNet, refer to its repository for installation instructions: [ml4bio/USPNet](https://github.com/ml4bio/USPNet).
 
-Install your pre-commit hooks:
-
-```bash
-pre-commit install
-```
-
-This installs the pre-commit hooks defined in your config (./.pre-commit-config.yaml).
-
-Export your conda environment before sharing:
-
-As your project develops, the number of dependencies in your environment may increase. Whenever you install new dependencies (using either pip install or mamba install), you should update the environment file using the following command.
-
-```bash
-conda env export --no-builds > envs/dev.yml
-```
-
-`--no-builds` removes build specification from the exported packages to increase portability between different platforms.
-
 ## Data
 
 ### Reference Data 
 
-`interpro_entry.txt` (from InterPro), `genome_assembly_taxonomy_list.csv`, `eukaryotic_species_taxonomy.csv`, `afdb_protein_confidence_scores.csv`
+- `interpro_entry.txt` (from InterPro)
+- `genome_assembly_taxonomy_list.csv`
+- `eukaryotic_species_taxonomy.csv`
+- `afdb_protein_confidence_scores.csv`
 
 ### Input Data
 
-Source Proteomes: FASTA files for Asgard archaea (311 proteomes), Giant Viruses (446 proteomes), Eukaryotes (63 proteomes), TACK/Euryarchaeota (outgroups). Accessions at data/reference/genome_assembly_list.csv.
+Source Proteomes: 
+- FASTA files for Asgard archaea (311 proteomes)
+- Giant Viruses (446 proteomes)
+- Eukaryotes (63 proteomes)
+- TACK/Euryarchaeota (outgroups). 
+
+Accessions at `data/reference/genome_assembly_list.csv`.
 
 ### Intermediate Data
 
-Many of these files are large, and are stored in a Zenodo repository (DOI: xxxx)
+Many of these files are large, and are stored in a Zenodo repository (DOI: xxxx). They include:
 
-Filtered FASTA files (e.g., data/input/filtered_fastas.Asgard_all_globular_proteins.fasta).
-
-OrthoFinder output files.
-
-InterProScan output mapping (integrated_asgard_gv_ortho_interpro.parquet).
-
-Mapping Files: integrated_asgard_gv_ortho_interpro.parquet.
-
-USPNet intermediate/output directories (eg. USPNet_Processed_Data*/results.csv).
-
-MMseqs2 search results: `results_vs_mgnify_ESMA.m8`.
-
-PDB sequence homology Search Results: `results_vs_pdb_v2.m8`.
-
-AFDB mapping results: `afdb_found_uniprot_acs_or_upi.csv`
-
-Extracted sequence/ID lists (e.g., `unique_virus_names.txt`, `afesm_esm_only_uniprot_ids.txt`).
+- Filtered FASTA files (e.g., `data/input/filtered_fastas.Asgard_all_globular_proteins.fasta`).
+- OrthoFinder output files.
+- InterProScan output mapping (`integrated_asgard_gv_ortho_interpro.parquet`).
+- USPNet intermediate/output directories (eg. `USPNet_Processed_Data*/results.csv`).
+- MMseqs2 search results: `results_vs_mgnify_ESMA.m8`.
+- PDB sequence homology Search Results: `results_vs_pdb_v2.m8`.
+- AFDB mapping results: `afdb_found_uniprot_acs_or_upi.csv`
+- AFESM ESM-only clusters: `afesm_esm_only_uniprot_ids.txt`
+- AFESM MGnify clusters: `afesm_mgnify_uniprot_ids.txt`
+- Extracted sequence/ID lists (e.g., `unique_virus_names.txt`, `afesm_esm_only_uniprot_ids.txt`).
 
 ### Primary Output Data
 
-`proteome_database_v3.5.csv`: Latest versions of the main integrated database. 
-
-output_plots/: Directory containing generated figures from analysis notebooks.
-
-### Data Deposition
-
-(TODO: Add Zenodo DOI or other repository links if data is deposited).
-
-Zenodo (TBD)
+- `proteome_database_v3.5.csv`: Latest versions of the main integrated database. 
+- `output_plots/`: Directory containing generated figures from analysis notebooks.
 
 ## Example Workflow / Running the Pipeline
 
