@@ -22,24 +22,25 @@ The large data files required to run this workflow (e.g., raw proteomes, DIAMOND
 
 This repository is organized into the following directories:
 
--   **/data**: Contains all data files, organized by status.
+-   **`/data`**: Contains all data files, organized by status.
     -   `input/`: Raw and primary input data files.
     -   `intermediate/`: Files generated during intermediate processing steps.
     -   `output/`: Final data outputs, such as analysis results and summary tables.
     -   `reference/`: Reference files like taxonomies or domain information.
--   **/envs**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
--   **/notebooks**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results. The primary notebook for this publication is `Consolidated_Publication_Notebook.ipynb`.
--   **/scripts**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
+-   **`/envs`**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
+-   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results. The primary notebook for this publication is `Consolidated_Publication_Notebook.ipynb`.
+-   **`/scripts`**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
     -   `utils/`: Contains helper scripts for generic data pre-processing tasks, such as filtering FASTA files and formatting headers.
 
 ## Installation and Setup
 
 This repository uses conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda here. After installing conda and mamba, run the following command to create the primary pipeline run environment used for most analyses. Note: Specific tools like DeepTMHMM and USPNet required separate environments/setups (Docker, specific Python versions).
 
+```bash
 # Environment used for data processing, analysis notebooks, MMseqs2 etc.
-
 mamba env create -n asgard_gv_env --file envs/dev.yml
 conda activate asgard_gv_env
+```
 
 The `envs/dev.yml` file contains the list of dependencies for the primary Conda environment. Ensure this file is kept up-to-date as new dependencies are added (see below).
 
@@ -47,7 +48,9 @@ For USPNet, refer to its repository for installation instructions: [ml4bio/USPNe
 
 Install your pre-commit hooks:
 
+```bash
 pre-commit install
+```
 
 This installs the pre-commit hooks defined in your config (./.pre-commit-config.yaml).
 
@@ -55,20 +58,23 @@ Export your conda environment before sharing:
 
 As your project develops, the number of dependencies in your environment may increase. Whenever you install new dependencies (using either pip install or mamba install), you should update the environment file using the following command.
 
+```bash
 conda env export --no-builds > envs/dev.yml
-```--no-builds` removes build specification from the exported packages to increase portability between different platforms.
+```
+
+`--no-builds` removes build specification from the exported packages to increase portability between different platforms.
 
 ## Data
 
-## Reference Data: 
+### Reference Data 
 
-interpro_entry.txt (from InterPro), genome_assembly_taxonomy_list.csv, eukaryotic_species_taxonomy.csv, afdb_protein_confidence_scores.csv
+`interpro_entry.txt` (from InterPro), `genome_assembly_taxonomy_list.csv`, `eukaryotic_species_taxonomy.csv`, `afdb_protein_confidence_scores.csv`
 
-## Input Data:
+### Input Data
 
 Source Proteomes: FASTA files for Asgard archaea (311 proteomes), Giant Viruses (446 proteomes), Eukaryotes (63 proteomes), TACK/Euryarchaeota (outgroups). Accessions at data/reference/genome_assembly_list.csv.
 
-## Intermediate Data:
+### Intermediate Data
 
 Many of these files are large, and are stored in a Zenodo repository (DOI: xxxx)
 
@@ -82,23 +88,25 @@ Mapping Files: integrated_asgard_gv_ortho_interpro.parquet.
 
 USPNet intermediate/output directories (eg. USPNet_Processed_Data*/results.csv).
 
-MMseqs2 search results: results_vs_mgnify_ESMA.m8.
+MMseqs2 search results: `results_vs_mgnify_ESMA.m8`.
 
-PDB sequence homology Search Results: results_vs_pdb_v2.m8.
+PDB sequence homology Search Results: `results_vs_pdb_v2.m8`.
 
-AFDB mapping results: afdb_found_uniprot_acs_or_upi.csv
+AFDB mapping results: `afdb_found_uniprot_acs_or_upi.csv`
 
-Extracted sequence/ID lists (e.g., unique_virus_names.txt, afesm_esm_only_uniprot_ids.txt).
+Extracted sequence/ID lists (e.g., `unique_virus_names.txt`, `afesm_esm_only_uniprot_ids.txt`).
 
-## Primary Output Data:
+### Primary Output Data
 
-proteome_database_v3.5.csv: Latest versions of the main integrated database. 
+`proteome_database_v3.5.csv`: Latest versions of the main integrated database. 
 
 output_plots/: Directory containing generated figures from analysis notebooks.
 
-## Data Deposition: (TODO: Add Zenodo DOI or other repository links if data is deposited).
+### Data Deposition
 
-Zenodo (tbd)
+(TODO: Add Zenodo DOI or other repository links if data is deposited).
+
+Zenodo (TBD)
 
 ## Example Workflow / Running the Pipeline
 
@@ -109,18 +117,17 @@ This section outlines a potential workflow for using the scripts in the `scripts
 *   External tools (DIAMOND, InterProScan, MAFFT, FastTree (or VeryFastTree), USPNet, OrthoFinder) are installed and accessible in your PATH, or their paths are provided to the respective wrapper scripts.
 *   Input FASTA files are organized appropriately (e.g., one directory per genome for `process_input_faa.py`, or a single directory of FASTA files for others).
 
----
-**Phase 1: Initial Data Preparation & Preprocessing**
----
+### Phase 1: Initial Data Preparation & Preprocessing
 
 1.  **Process NCBI FASTA files (if applicable):**
     *   Standardizes headers, extracts bracketed info (e.g., taxonomy).
     *   Script: `scripts/process_input_faa.py`
     *   Example:
+        ```bash
         python scripts/process_input_faa.py \
             -i path/to/raw_genome_faa_directories/ \
             -o data/processed_fastas/step1_standardized/ \
-            --input_faa_name protein.faa 
+            --input_faa_name protein.faa
         ```
     *   Input: Directory containing subdirectories, each with a `protein.faa` (or specified name).
     *   Output: Directory with processed FASTA files, one per input genome, with standardized headers.
@@ -128,11 +135,12 @@ This section outlines a potential workflow for using the scripts in the `scripts
 2.  **Filter sequences by length:**
     *   Script: `scripts/fasta_length_filter.py`
     *   Example:
+        ```bash
         python scripts/fasta_length_filter.py \
             -i data/processed_fastas/step1_standardized/ \
             -o data/processed_fastas/step2_len_filtered/ \
             --min_len 80 \
-            --max_len 10000 
+            --max_len 10000
         ```
     *   Input: Directory of FASTA files (e.g., from step 1).
     *   Output: Directory with FASTA files containing only sequences within the specified length range.
@@ -140,79 +148,80 @@ This section outlines a potential workflow for using the scripts in the `scripts
 3.  **Filter by predicted disorder (Metapredict):**
     *   Script: `scripts/run_metapredict_filter.py`
     *   Example:
+        ```bash
         python scripts/run_metapredict_filter.py \
             -i data/processed_fastas/step2_len_filtered/ \
-            -o data/processed_fastas/step3_globular_filtered/ \
+            -o data/processed_fastas/step3_globular_filtered/
         ```
     *   Input: Directory of FASTA files (e.g., from step 2).
     *   Output: 
         *   Directory `step3_globular_filtered/` with FASTA files of predicted globular proteins.
         *   `skipped_X.fasta` for sequences with 'X' amino acids.
         *   `sdisordered.fasta` for predicted disordered sequences.
-    *   *Use `data/processed_fastas/step3_globular_filtered/` for subsequent steps if selecting for globular proteins.*
+    *   Use `data/processed_fastas/step3_globular_filtered/` for subsequent steps if selecting for globular proteins.
 
 4.  **Concatenate**
     *   This script can be used to create specific subsets, e.g., all hypothetical proteins for InterProScan.
     *   Script: `scripts/cat_filter_fastas.py`
     *   Example (extracting hypotheticals from globular proteins):
+        ```bash
         python scripts/cat_filter_fastas.py \
             -i data/processed_fastas/step3_globular_filtered/ \
-            -c data/processed_fastas/all_globular_concat.fasta \
+            -c data/processed_fastas/all_globular_concat.fasta
+        ```
     *   Input: Directory of FASTA files.
     *   Output: A concatenated FASTA .
 
----
-**Phase 2: Orthology Analysis (using OrthoFinder docker image)**
----
+### Phase 2: Orthology Analysis (using OrthoFinder docker image)
 
 5. **Run OrthoFinder:**
     *   This step uses the OrthoFinder tool, which is external to this script suite.
     *   Input to OrthoFinder would typically be the processed, filtered FASTA files (one per species/genome), e.g., from `data/processed_fastas/step3_globular_filtered/` or a non-redundant set like `all_globular_nr90.fasta` if analyzing a single combined proteome.
     *   Example:
+        ```bash
         docker run --rm -v /path/to/data:/data davidemms/orthofinder orthofinder -f /data/processed_fastas/step3_globular_filtered/ -t 16 -o /data/orthofinder_results/
         ```
 
 6. **Analyze OrthoFinder results:**
     *   Script: `scripts/orthofinder_analysis.py`
     *   Example:
+        ```bash
         python scripts/orthofinder_analysis.py \
             -r data/orthofinder_results/OrthoFinder/Results_*/ \
             -f data/processed_fastas/step3_globular_filtered/ \
             --phylum_map data/reference_tables/genome_to_phylum_map.tsv \
             -p MyAnalysis_OGs \
             --plot_dir output_plots/orthofinder_analysis/ \
-            --conservation_threshold 80 
+            --conservation_threshold 80
         ```
     *   Input: OrthoFinder results directory, directory of FASTA files used for OrthoFinder (for metadata), optional phylum map.
     *   Output: TSV files with OG statistics, lists of conserved OGs, summary text file, and plots.
 
----
-**Phase 3: Eukaryotic Homology Search **
----
+### Phase 3: Eukaryotic Homology Search
 
 7.  **Run DIAMOND homology search:**
     *   Search your processed proteomes against a reference database (e.g., UniRef100).
     *   Script: `scripts/run_diamond_loop.sh`
     *   Example:
+        ```bash
         bash scripts/run_diamond_loop.sh \
             -i data/processed_fastas/step3_globular_filtered/ \
             -o data/diamond_results/ \
             -d path/to/your/db.dmnd \
             -t 16 \
             -m 5 \
-            -p "*.fasta" 
+            -p "*.fasta"
         ```
     *   Input: Directory of FASTA files (one per genome/proteome).
     *   Output: Directory with DIAMOND search result files (TSV format), one per input FASTA.
 
----
-**Phase 4: Functional Annotation & ID Mapping**
----
+### Phase 4: Functional Annotation & ID Mapping
 
 8.  **Run InterProScan for functional annotation:**
     *   Ensure Interproscan and all necessary files are properly installed locally
     *   Script: `scripts/run_interproscan.sh`
     *   Example :
+        ```bash
         # The script passes arguments directly to InterProScan's interproscan.sh
         bash scripts/run_interproscan.sh \
             -i data/processed_fastas/Asgard_all_globular_proteins.fasta \
@@ -220,7 +229,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
             -f TSV,GFF3 \
             -goterms \
             -pa \
-            --cpu 16 
+            --cpu 16
         # Add other InterProScan options as needed (e.g., -appl Pfam,CDD)
         ```
     *   Input: A FASTA file of proteins to annotate.
@@ -229,6 +238,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
 9.  **Predict signal peptides (USPNet):**
     *   Script: `scripts/run_uspnet.sh`
     *   Example (using a concatenated FASTA of all proteins of interest):
+        ```bash
         # Ensure all_proteins_for_uspnet.fasta is prepared
         bash scripts/run_uspnet.sh \
             -i data/processed_fastas/all_globular_concat.fasta \
@@ -242,6 +252,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Requires a CSV input mapping your protein IDs to UniProt ACs or UPIs.
     *   Script: `scripts/fetch_plddt.py`
     *   Example:
+        ```bash
         python scripts/fetch_plddt.py \
             -i data/reference_tables/my_protein_to_uniprot_map.csv \
             -o data/plddt_scores/protein_plddt_scores.csv \
@@ -255,6 +266,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
 11. **Map UniProtKB ACs to PDB IDs:**
     *   Script: `scripts/uniprot_pdb_search.py`
     *   Example:
+        ```bash
         # Create a file with one UniProtKB AC per line
         # e.g., data/uniprot_ids_for_pdb_search.txt
         python scripts/uniprot_pdb_search.py \
@@ -265,9 +277,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: Text file with UniProtKB Accessions.
     *   Output: TSV file mapping UniProtKB ACs to PDB IDs.
 
----
-**Phase 5: Downstream Analyses on Orthogroups**
----
+### Phase 5: Downstream Analyses on Orthogroups
 
 13. **Extract sequences for specific OGs:**
     *   Script: `scripts/extract_sequences_by_id.py`
@@ -275,12 +285,13 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   The reference FASTA could be `data/processed_fastas/all_globular_concat.fasta`.
     *   Hit files (e.g., `OG00001.txt` containing protein IDs for that OG) would need to be generated, perhaps from `orthofinder_analysis.py` outputs or OrthoFinder's own files.
     *   Example (conceptual, assuming hit files are prepared):
+        ```bash
         python scripts/extract_sequences_by_id.py \
             -r data/processed_fastas/all_globular_concat.fasta \
             -d data/og_id_lists_for_extraction/ \
             -o data/og_sequences_for_alignment/ \
             --hits_suffix .txt \
-            --hits_column ProteinID 
+            --hits_column ProteinID
         ```
     *   Input: Reference FASTA, directory of ID list files.
     *   Output: Directory with FASTA files, one per input ID list (per OG).
@@ -288,13 +299,14 @@ This section outlines a potential workflow for using the scripts in the `scripts
 14. **Align sequences within OGs (MAFFT):**
     *   Script: `scripts/run_mafft_parallel.py`
     *   Example:
+        ```bash
         python scripts/run_mafft_parallel.py \
             -i data/og_sequences_for_alignment/ \
             -o data/og_alignments/ \
             -l data/og_alignments_logs/ \
             --input_suffix .fasta \
             --output_suffix .mafft.fa \
-            -n 16 
+            -n 16
         ```
     *   Input: Directory of per-OG FASTA files (e.g., from step 15).
     *   Output: Directory of aligned FASTA files (e.g., `OG123.mafft.fa`). Per-job logs.
@@ -302,6 +314,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
 15. **Build phylogenetic trees from alignments (FastTree):**
     *   Script: `scripts/run_fasttree_parallel.py`
     *   Example:
+        ```bash
         python scripts/run_fasttree_parallel.py \
             -i data/og_alignments/ \
             -o data/og_trees/ \
@@ -317,14 +330,13 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Requires an input CSV where rows are OGs and columns are features (e.g., domain counts per OG). This CSV would need to be generated from other data (e.g., InterProScan results merged with OG assignments).
     *   Script: `scripts/hill_diversity_analysis.py`
     *   Example (assuming `og_domain_counts.csv` is prepared):
+        ```bash
         python scripts/hill_diversity_analysis.py \
             -i data/analysis_inputs/og_domain_counts.csv \
             -o output_plots/hill_diversity_domains.png
         ```
     *   Input: CSV file with orthogroups and feature counts/proportions.
     *   Output: PNG plot of Hill diversity.
-
----
 
 This workflow provides a comprehensive guide. Remember to adapt file paths, names, and specific tool parameters based on your actual data and analytical goals. For detailed options of each script, run `python scripts/script_name.py --help`.
 
@@ -340,9 +352,9 @@ Orthology Inference: Ran OrthoFinder separately on the filtered Asgard and GV pr
 
 Functional Annotation (InterProScan):
 
-Ran InterProScan (v5.73-104.0 via Docker) iteratively. Initially on nr90 subsets (created via cd-hit -c 0.90), then on proteins initially lacking hits to maximize coverage - so ultimately ran on all proteins in the dataset. Used a curated application list (Pfam, CDD, Gene3D, SUPERFAMILY, SMART, ProSitePatterns, ProSiteProfiles) and requested GO terms/pathways. Managed memory via modified interproscan.sh.
+Ran InterProScan (v5.73-104.0 via Docker) iteratively. Initially on nr90 subsets (created via `cd-hit -c 0.90`), then on proteins initially lacking hits to maximize coverage - so ultimately ran on all proteins in the dataset. Used a curated application list (Pfam, CDD, Gene3D, SUPERFAMILY, SMART, ProSitePatterns, ProSiteProfiles) and requested GO terms/pathways. Managed memory via modified `interproscan.sh`.
 
-Custom Functional Categorization: Developed and applied a rule-based Python script (add_specific_category_IPR_v10.py) using specific IPR IDs, keywords (in IPR names/source annotations), and IPR type fallback to assign Specific_Functional_Category and Category_Trigger.
+Custom Functional Categorization: Developed and applied a rule-based Python script (`add_specific_category_IPR_v10.py`) using specific IPR IDs, keywords (in IPR names/source annotations), and IPR type fallback to assign `Specific_Functional_Category` and `Category_Trigger`.
 
 Taxonomy Refinement: Fetched NCBI TaxIDs via Entrez; parsed Asgard Phylum, Virus Name; assigned Virus Family via custom keyword matching.
 
@@ -350,13 +362,13 @@ Sequence Feature Prediction:
 
 Ran USPNet locally to predict signal peptides and infer likely localization (Signal_Peptide_USPNet, SP_Cleavage_Site_USPNet).
 
-Ran Metapredict locally via add_disorder.py script to calculate Percent_Disorder to the main database.
+Ran Metapredict locally via `add_disorder.py` script to calculate `Percent_Disorder` to the main database.
 
-Database Integration: Iteratively merged all annotations and metadata into the proteome_database CSV using the database_assembly.ipynb notebook. 
+Database Integration: Iteratively merged all annotations and metadata into the `proteome_database` CSV using the `database_assembly.ipynb` notebook. 
 
 Homology Searching & Structural Context:
 
-Processed previous search results (results_vs_pdb_v2.m8, afdb_found_uniprot_acs_or_upi.csv) to flag proteins with PDB/AFDB hits (Has_Known_Structure).
+Processed previous search results (`results_vs_pdb_v2.m8`, `afdb_found_uniprot_acs_or_upi.csv`) to flag proteins with PDB/AFDB hits (`Has_Known_Structure`).
 
 Performed screen against AFESM "ESM-only" clusters using UniProt IDs. The AFESM "ESM-only" clusters were derived from database associated with "Metagenomic-scale analysis of the predicted protein structure universe; https://doi.org/10.1101/2025.04.23.650224". First, we ran all Structurally Dark proteins on an MMseqs2 search against the MGnify database, to identify MGnify clusters these proteins fall into. Then, we searched these against the AFESM "ESM-only" clusters, to determine if any of the Structurall Dark proteins were in the ESMAtlas.
 
