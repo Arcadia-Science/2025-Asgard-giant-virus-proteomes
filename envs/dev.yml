@@ -271,4 +271,3 @@ dependencies:
       - scikit-learn==1.6.1
       - sqlitedict==1.7.0
       - threadpoolctl==3.6.0
-prefix: /Users/stephen/miniconda3/envs/asgard_gv_env

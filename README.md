@@ -154,7 +154,11 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input to OrthoFinder would typically be the processed, filtered FASTA files (one per species/genome), e.g., from `data/processed_fastas/step3_globular_filtered/` or a non-redundant set like `all_globular_nr90.fasta` if analyzing a single combined proteome.
     *   Example:
         ```bash
-        docker run --rm -v /path/to/data:/data davidemms/orthofinder orthofinder -f /data/processed_fastas/step3_globular_filtered/ -t 16 -o /data/orthofinder_results/
+        docker run --rm -v /path/to/data:/data davidemms/orthofinder \
+            orthofinder \
+            -f /data/processed_fastas/step3_globular_filtered/ \
+            -t 16 \
+            -o /data/orthofinder_results/
         ```
 
 6. **Analyze OrthoFinder results:**
@@ -317,8 +321,6 @@ This workflow provides a comprehensive guide. Remember to adapt file paths, name
 
 ## Overview
 
-### Description of the folder structure
-
 ### Methods
 
 Data Acquisition & Preparation: Downloaded source proteomes (Asgard: 311, GV: 451) from NCBI. Filtered proteomes for length (80-1000 aa) and predicted globularity (Metapredict). Generated custom FASTA headers.
@@ -351,33 +353,12 @@ Exploratory Data Analysis: Used Jupyter notebooks (notebooks/) with Python (pand
 
 ### Compute Specifications
 
-Local: Apple MacBook Pro M3 Max, 36 GB RAM (Used for scripting, USPNet, Metapredict, InterProScan runs, data analysis, Git management).
+Apple MacBook Pro M3 Max, 36 GB RAM (Used for USPNet, Metapredict, InterProScan runs, data analysis).
 
-Cloud (AWS EC2):
+AWS EC2 (used for MGnify database indexing and MMseqs2 search): r6i.16xlarge (64 vCPU, 512 GiB RAM) with Amazon Linux 2.
 
-r6i.16xlarge (64 vCPU, 512 GiB RAM): Used for MGnify database indexing and MMseqs2 search.
-
-Operating System (EC2): Amazon Linux 2
-
-Key Software: Python 3.9 (via Conda/Mamba), Pandas, NumPy, Matplotlib, Seaborn, Biopython, MMseqs2 (v17+), InterProScan (v5.73-104.0 via Docker), USPNet (local install), Metapredict, OrthoFinder, Docker, AWS CLI, CD-HIT, Git.
+Required Software: Python 3.9 (via Conda/Mamba), MMseqs2 (v17+), InterProScan (v5.73-104.0 via Docker), USPNet (local install), Metapredict, OrthoFinder, CD-HIT.
 
 ## Contributing
 
 See how we recognize [feedback and contributions to our code](https://github.com/Arcadia-Science/arcadia-software-handbook/blob/main/guides-and-standards/guide--credit-for-contributions.md).
-
----
-## For Developers
-
-This section contains information for developers who are working off of this template. Please adjust or edit this section as appropriate when you're ready to share your repo.
-
-### GitHub templates
-This template uses GitHub templates to provide checklists when making new pull requests. These templates are stored in the [.github/](./.github/) directory.
-
-### `.gitignore`
-This template uses a `.gitignore` file to prevent certain files from being committed to the repository.
-
-### `pyproject.toml`
-`pyproject.toml` is a configuration file to specify your project's metadata and to set the behavior of other tools such as linters, type checkers etc. You can learn more [here](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
-
-### Linting
-This template automates linting and formatting using GitHub Actions and the `ruff` linter. When you push changes to your repository, GitHub will automatically run the linter and report any errors, blocking merges until they are resolved.
