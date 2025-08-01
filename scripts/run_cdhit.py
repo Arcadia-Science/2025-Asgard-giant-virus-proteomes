@@ -14,12 +14,25 @@ import argparse
 import subprocess
 import shlex
 import logging
-import shutil # To check if cd-hit executable exists
+import shutil  # To check if cd-hit executable exists
 
 # --- Setup Logging ---
-logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
-def run_cdhit(input_fasta, output_fasta, identity_threshold, word_size, memory_limit_mb, threads, other_options=""):
+
+def run_cdhit(
+    input_fasta,
+    output_fasta,
+    identity_threshold,
+    word_size,
+    memory_limit_mb,
+    threads,
+    other_options="",
+):
     """
     Executes the cd-hit command using subprocess.
 
@@ -45,12 +58,18 @@ def run_cdhit(input_fasta, output_fasta, identity_threshold, word_size, memory_l
     # Use shlex.quote to handle paths with spaces safely
     cmd_parts = [
         cdhit_executable,
-        "-i", shlex.quote(input_fasta),
-        "-o", shlex.quote(output_fasta),
-        "-c", str(identity_threshold),
-        "-n", str(word_size),
-        "-M", str(memory_limit_mb), # CD-HIT expects MB, 0 means unlimited
-        "-T", str(threads)
+        "-i",
+        shlex.quote(input_fasta),
+        "-o",
+        shlex.quote(output_fasta),
+        "-c",
+        str(identity_threshold),
+        "-n",
+        str(word_size),
+        "-M",
+        str(memory_limit_mb),  # CD-HIT expects MB, 0 means unlimited
+        "-T",
+        str(threads),
     ]
 
     # Add other options if provided
@@ -58,15 +77,19 @@ def run_cdhit(input_fasta, output_fasta, identity_threshold, word_size, memory_l
         # Use shlex.split to handle potentially complex options safely
         cmd_parts.extend(shlex.split(other_options))
 
-    command_str = " ".join(cmd_parts) # For logging purposes
+    command_str = " ".join(cmd_parts)  # For logging purposes
     logging.info(f"Running CD-HIT command:\n{command_str}")
 
     try:
         # Run the command, capture output and errors
-        process = subprocess.run(command_str, shell=True, check=True, capture_output=True, text=True)
+        process = subprocess.run(
+            command_str, shell=True, check=True, capture_output=True, text=True
+        )
         logging.info("CD-HIT standard output:\n" + process.stdout)
         if process.stderr:
-            logging.warning("CD-HIT standard error:\n" + process.stderr) # Log stderr as warning
+            logging.warning(
+                "CD-HIT standard error:\n" + process.stderr
+            )  # Log stderr as warning
         logging.info(f"CD-HIT finished successfully for {input_fasta}.")
         logging.info(f"Output non-redundant file: {output_fasta}")
         logging.info(f"Cluster information file: {output_fasta}.clstr")
@@ -81,25 +104,57 @@ def run_cdhit(input_fasta, output_fasta, identity_threshold, word_size, memory_l
         logging.error(f"An unexpected error occurred while running CD-HIT: {e}")
         return False
 
+
 def parse_arguments():
     """Parses command-line arguments."""
     parser = argparse.ArgumentParser(description="Run CD-HIT on a FASTA file.")
-    parser.add_argument("-i", "--input_fasta", required=True,
-                        help="Path to the input FASTA file.")
-    parser.add_argument("-o", "--output_fasta", required=True,
-                        help="Path for the output non-redundant FASTA file.")
-    parser.add_argument("-c", "--identity", type=float, default=0.9,
-                        help="Sequence identity threshold (option -c, default: 0.9).")
-    parser.add_argument("-n", "--word_size", type=int, choices=[2, 3, 4, 5], default=5,
-                        help="Word size (option -n, default: 5). Must be 2, 3, 4, or 5.")
-    parser.add_argument("-M", "--memory_mb", type=int, default=0,
-                        help="Memory limit in MB (option -M, 0 for unlimited, default: 0).")
-    parser.add_argument("-T", "--threads", type=int, default=1,
-                        help="Number of threads (option -T, default: 1).")
-    parser.add_argument("--other_options", type=str, default="-d 0",
-                        help="String containing any other desired cd-hit options (e.g., '-d 0 -G 1') (default: '-d 0').")
+    parser.add_argument(
+        "-i", "--input_fasta", required=True, help="Path to the input FASTA file."
+    )
+    parser.add_argument(
+        "-o",
+        "--output_fasta",
+        required=True,
+        help="Path for the output non-redundant FASTA file.",
+    )
+    parser.add_argument(
+        "-c",
+        "--identity",
+        type=float,
+        default=0.9,
+        help="Sequence identity threshold (option -c, default: 0.9).",
+    )
+    parser.add_argument(
+        "-n",
+        "--word_size",
+        type=int,
+        choices=[2, 3, 4, 5],
+        default=5,
+        help="Word size (option -n, default: 5). Must be 2, 3, 4, or 5.",
+    )
+    parser.add_argument(
+        "-M",
+        "--memory_mb",
+        type=int,
+        default=0,
+        help="Memory limit in MB (option -M, 0 for unlimited, default: 0).",
+    )
+    parser.add_argument(
+        "-T",
+        "--threads",
+        type=int,
+        default=1,
+        help="Number of threads (option -T, default: 1).",
+    )
+    parser.add_argument(
+        "--other_options",
+        type=str,
+        default="-d 0",
+        help="String containing any other desired cd-hit options (e.g., '-d 0 -G 1') (default: '-d 0').",
+    )
 
     return parser.parse_args()
+
 
 # --- Main Execution ---
 if __name__ == "__main__":
@@ -128,7 +183,7 @@ if __name__ == "__main__":
         word_size=args.word_size,
         memory_limit_mb=args.memory_mb,
         threads=args.threads,
-        other_options=args.other_options
+        other_options=args.other_options,
     )
 
     if success:

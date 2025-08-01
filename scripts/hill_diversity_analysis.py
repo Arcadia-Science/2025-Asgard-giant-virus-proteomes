@@ -4,7 +4,12 @@ import argparse
 import logging
 
 # --- Setup Logging ---
-logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
 
 def hill_diversity(p, q):
     """
@@ -16,7 +21,8 @@ def hill_diversity(p, q):
         # Special case for q=1, which is the exponential of Shannon entropy
         return np.exp(-np.sum(p * np.log(p)))
     else:
-        return np.sum(p**q)**(1/(1-q))
+        return np.sum(p**q) ** (1 / (1 - q))
+
 
 def main():
     """
@@ -27,14 +33,16 @@ def main():
         description="Calculate Hill diversity from orthogroup domain abundance data."
     )
     parser.add_argument(
-        "-i", "--input",
+        "-i",
+        "--input",
         required=True,
-        help="Path to the input CSV file. Expects Orthogroups as rows and domain/species counts as columns."
+        help="Path to the input CSV file. Expects Orthogroups as rows and domain/species counts as columns.",
     )
     parser.add_argument(
-        "-o", "--output",
+        "-o",
+        "--output",
         required=True,
-        help="Path to save the output CSV file containing calculated diversity metrics."
+        help="Path to save the output CSV file containing calculated diversity metrics.",
     )
     args = parser.parse_args()
 
@@ -59,17 +67,13 @@ def main():
         # Convert counts to proportions
         total_count = np.sum(row.values)
         if total_count == 0:
-            continue # Skip orthogroups with no domains/species
-        
+            continue  # Skip orthogroups with no domains/species
+
         proportions = row.values / total_count
-        
+
         for q in q_values:
             diversity = hill_diversity(proportions, q)
-            results.append({
-                'Orthogroup': orthogroup,
-                'q': q,
-                'Diversity': diversity
-            })
+            results.append({"Orthogroup": orthogroup, "q": q, "Diversity": diversity})
 
     if not results:
         logging.warning("No diversity results were calculated. Check input data.")
@@ -79,10 +83,11 @@ def main():
 
     logging.info(f"Saving diversity metrics to: {args.output}")
     try:
-        results_df.to_csv(args.output, index=False, float_format='%.5f')
+        results_df.to_csv(args.output, index=False, float_format="%.5f")
         logging.info("Analysis complete.")
     except IOError as e:
         logging.error(f"Failed to write output file: {e}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
