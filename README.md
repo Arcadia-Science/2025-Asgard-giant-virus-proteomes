@@ -13,8 +13,8 @@ This repository contains the scripts and analysis notebooks used to construct an
 ### Data Availability
 
 The large data files required to run this workflow (e.g., raw proteomes, DIAMOND databases, and large intermediate files) are not stored in this Git repository. They are permanently archived and publicly available on Zenodo.
+**To run the analysis, please first download the data from Zenodo [https://doi.org/10.5281/zenodo.15933361] and place the contents into the corresponding subdirectories within the `data/` folder in this repository.**
 
-**To run the analysis, please first download the data from Zenodo [INSERT ZENODO DOI LINK HERE] and place the contents into the corresponding subdirectories within the `data/` folder in this repository.**
 
 ### Project Structure
 
@@ -26,10 +26,13 @@ This repository is organized into the following directories:
     -   `output/`: Final data outputs, such as analysis results and summary tables.
     -   `reference/`: Reference files like taxonomies or domain information.
 -   **`/envs`**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
--   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results. The primary notebook for this publication is `Consolidated_Publication_Notebook.ipynb`.
+-   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results.
+    - `Database_pub_analysis.ipynb`: Notebook for the analysis of the database.
+    - `Figures_DB_Pub.ipynb`: Notebook for generating the figures for the publication.
+    - `database_assembly.ipynb`: Notebook for assembling the database.
 -   **`/scripts`**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
     -   `utils/`: Contains helper scripts for generic data pre-processing tasks, such as filtering FASTA files and formatting headers.
-
+      
 ## Installation and Setup
 
 This repository uses conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda here. After installing conda and mamba, run the following command to create the primary pipeline run environment used for most analyses. Note: Specific tools like DeepTMHMM and USPNet required separate environments/setups (Docker, specific Python versions).
@@ -48,10 +51,10 @@ For USPNet, refer to its repository for installation instructions: [ml4bio/USPNe
 
 ### Reference Data 
 
-- `interpro_entry.txt` (from InterPro)
-- `genome_assembly_taxonomy_list.csv`
-- `eukaryotic_species_taxonomy.csv`
-- `afdb_protein_confidence_scores.csv`
+- `interpro_entry.txt` (https://www.ebi.ac.uk/interpro/download/)
+- `genome_assembly_taxonomy_list.csv` (generated from the downloaded assemblies)
+- `eukaryotic_species_taxonomy.csv` (generated from the downloaded eukaryotic proteomes)
+- `afdb_protein_confidence_scores.csv` (generated using scripts/fetch_plddt.py)
 
 ### Input Data
 
@@ -59,13 +62,12 @@ Source Proteomes:
 - FASTA files for Asgard archaea (311 proteomes)
 - Giant Viruses (446 proteomes)
 - Eukaryotes (63 proteomes)
-- TACK/Euryarchaeota (outgroups). 
 
-Accessions at `data/reference/genome_assembly_list.csv`.
+Accessions at `data/reference/genome_assembly_list.csv` and `data/reference/eukaryotic_species_taxonomy.csv`
 
 ### Intermediate Data
 
-Many of these files are large, and are stored in a Zenodo repository (DOI: xxxx). They include:
+Many of these files are large, and are stored in a Zenodo repository (DOI: 10.5281/zenodo.15933361). They include:
 
 - Filtered FASTA files (e.g., `data/input/filtered_fastas.Asgard_all_globular_proteins.fasta`).
 - OrthoFinder output files.
@@ -108,7 +110,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Output: Directory with processed FASTA files, one per input genome, with standardized headers.
 
 2.  **Filter sequences by length:**
-    *   Script: `scripts/fasta_length_filter.py`
+    *   Script: `scripts/utils/fasta_length_filter.py`
     *   Example:
         ```bash
         python scripts/fasta_length_filter.py \
@@ -120,7 +122,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Input: Directory of FASTA files (e.g., from step 1).
     *   Output: Directory with FASTA files containing only sequences within the specified length range.
 
-3.  **Filter by predicted disorder (Metapredict):**
+3.  **Filter by predicted disorder (Metapredict v3):**
     *   Script: `scripts/run_metapredict_filter.py`
     *   Example:
         ```bash
@@ -319,37 +321,16 @@ This section outlines a potential workflow for using the scripts in the `scripts
 
 This workflow provides a comprehensive guide. Remember to adapt file paths, names, and specific tool parameters based on your actual data and analytical goals. For detailed options of each script, run `python scripts/script_name.py --help`.
 
-## Overview
+    # Detailed methods of how we used these scripts and analyzed the outputs are available in the Methods section of the pub  
 
-### Methods
+#### Database Integration
 
-Data Acquisition & Preparation: Downloaded source proteomes (Asgard: 311, GV: 451) from NCBI. Filtered proteomes for length (80-1000 aa) and predicted globularity (Metapredict). Generated custom FASTA headers.
+All annotations and metadata were iteratively merged into a single `proteome_database` CSV file using the `database_assembly.ipynb` Jupyter notebook.
 
-Orthology Inference: Ran OrthoFinder separately on the filtered Asgard and GV proteomes to assign proteins to Orthogroups (OGs). A Docker image for OrthoFinder can be found here: [davidemms/OrthoFinder-Dockerfile](https://github.com/davidemms/OrthoFinder-Dockerfile).
 
-Functional Annotation (InterProScan):
+#### Exploratory Data Analysis
 
-Ran InterProScan (v5.73-104.0 via Docker) iteratively. Initially on nr90 subsets (created via `cd-hit -c 0.90`), then on proteins initially lacking hits to maximize coverage - so ultimately ran on all proteins in the dataset. Used a curated application list (Pfam, CDD, Gene3D, SUPERFAMILY, SMART, ProSitePatterns, ProSiteProfiles) and requested GO terms/pathways. Managed memory via modified `interproscan.sh`.
-
-Custom Functional Categorization: Developed and applied a rule-based Python script (`add_specific_category_IPR_v10.py`) using specific IPR IDs, keywords (in IPR names/source annotations), and IPR type fallback to assign `Specific_Functional_Category` and `Category_Trigger`.
-
-Taxonomy Refinement: Fetched NCBI TaxIDs via Entrez; parsed Asgard Phylum, Virus Name; assigned Virus Family via custom keyword matching.
-
-Sequence Feature Prediction:
-
-Ran USPNet locally to predict signal peptides and infer likely localization (Signal_Peptide_USPNet, SP_Cleavage_Site_USPNet).
-
-Ran Metapredict locally via `add_disorder.py` script to calculate `Percent_Disorder` to the main database.
-
-Database Integration: Iteratively merged all annotations and metadata into the `proteome_database` CSV using the `database_assembly.ipynb` notebook. 
-
-Homology Searching & Structural Context:
-
-Processed previous search results (`results_vs_pdb_v2.m8`, `afdb_found_uniprot_acs_or_upi.csv`) to flag proteins with PDB/AFDB hits (`Has_Known_Structure`).
-
-Performed screen against AFESM "ESM-only" clusters using UniProt IDs. The AFESM "ESM-only" clusters were derived from database associated with "Metagenomic-scale analysis of the predicted protein structure universe; https://doi.org/10.1101/2025.04.23.650224". First, we ran all Structurally Dark proteins on an MMseqs2 search against the MGnify database, to identify MGnify clusters these proteins fall into. Then, we searched these against the AFESM "ESM-only" clusters, to determine if any of the Structurall Dark proteins were in the ESMAtlas.
-
-Exploratory Data Analysis: Used Jupyter notebooks (notebooks/) with Python (pandas, matplotlib, seaborn, arcadia-pycolor) to analyze dataset composition, sequence features, functional annotations, and intra-OG sequence divergence.
+Exploratory data analysis was conducted using Jupyter notebooks located in the `notebooks/` directory. The Python libraries pandas, matplotlib, seaborn, and arcadia-pycolor were used to analyze the dataset's composition, sequence features, functional annotations, and the sequence divergence within orthogroups.
 
 ### Compute Specifications
 
