@@ -27,7 +27,6 @@ This repository is organized into the following directories:
     -   `reference/`: Reference files like taxonomies or domain information.
 -   **`/envs`**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
 -   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results.
-    - `Database_pub_analysis.ipynb`: Notebook for the analysis of the database.
     - `Figures_DB_Pub.ipynb`: Notebook for generating the figures for the publication.
     - `database_assembly.ipynb`: Notebook for assembling the database.
 -   **`/scripts`**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
