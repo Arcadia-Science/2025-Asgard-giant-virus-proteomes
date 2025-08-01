@@ -136,7 +136,7 @@ def load_phylum_map(map_file):
     try:
         # Try tab separator first, then comma
         try:
-            phylum_df_map = pd.read_csv(map_file, sep='\\t')
+            phylum_df_map = pd.read_csv(map_file, sep='\t')
         except pd.errors.ParserError:
              logging.debug("Tab separator failed, trying comma...")
              phylum_df_map = pd.read_csv(map_file, sep=',')
@@ -250,7 +250,7 @@ def load_orthogroups(orthofinder_results_dir):
     orthogroups_file = os.path.join(orthofinder_results_dir, 'Orthogroups', 'Orthogroups.tsv')
     logging.info(f"Loading orthogroups from: {orthogroups_file}")
     try:
-        og_df_wide = pd.read_csv(orthogroups_file, sep='\\t', index_col=0, keep_default_na=True, na_values=[''])
+        og_df_wide = pd.read_csv(orthogroups_file, sep='\t', index_col=0, keep_default_na=True, na_values=[''])
         logging.info(f"Successfully loaded {len(og_df_wide)} orthogroups.")
         if 'HOG' in og_df_wide.columns:
             og_df_wide = og_df_wide.drop(columns=['HOG'])
@@ -424,10 +424,10 @@ def filter_and_save_ogs(og_stats_full, merged_data, num_species, conservation_th
         hypo_ogs_file = f'{output_prefix}_conserved{conservation_threshold_pct}pct_hypothetical_ogs.tsv'
         hypo_proteins_file = f'{output_prefix}_conserved{conservation_threshold_pct}pct_hypothetical_proteins.tsv'
         try:
-            conserved_hypothetical_ogs_sorted[og_output_cols].to_csv(hypo_ogs_file, sep='\\t', index=False, float_format='%.1f')
+            conserved_hypothetical_ogs_sorted[og_output_cols].to_csv(hypo_ogs_file, sep='\t', index=False, float_format='%.1f')
             logging.info(f"  Saved conserved hypothetical OG stats to: {hypo_ogs_file}")
             conserved_hypo_proteins = merged_data[merged_data['Orthogroup'].isin(conserved_hypothetical_ogs['Orthogroup'])]
-            conserved_hypo_proteins[protein_output_cols].to_csv(hypo_proteins_file, sep='\\t', index=False)
+            conserved_hypo_proteins[protein_output_cols].to_csv(hypo_proteins_file, sep='\t', index=False)
             logging.info(f"  Saved conserved hypothetical protein list ({len(conserved_hypo_proteins):,} proteins) to: {hypo_proteins_file}")
         except IOError as e:
             logging.error(f"  Failed to write conserved hypothetical output files: {e}")
@@ -450,10 +450,10 @@ def filter_and_save_ogs(og_stats_full, merged_data, num_species, conservation_th
             # Display top 5 for verification
             logging.info("    --- Top Conserved Annotated OGs ---")
             logging.info(conserved_annotated_ogs_sorted[og_output_cols].round(1).head().to_string())
-            conserved_annotated_ogs_sorted[og_output_cols].to_csv(anno_ogs_file, sep='\\t', index=False, float_format='%.1f')
+            conserved_annotated_ogs_sorted[og_output_cols].to_csv(anno_ogs_file, sep='\t', index=False, float_format='%.1f')
             logging.info(f"   Saved OG stats to: {anno_ogs_file}")
             conserved_anno_proteins = merged_data[merged_data['Orthogroup'].isin(conserved_annotated_ogs['Orthogroup'])]
-            conserved_anno_proteins[protein_output_cols].to_csv(anno_proteins_file, sep='\\t', index=False)
+            conserved_anno_proteins[protein_output_cols].to_csv(anno_proteins_file, sep='\t', index=False)
             logging.info(f"   Saved conserved annotated protein list ({len(conserved_anno_proteins):,} proteins) to: {anno_proteins_file}")
         except IOError as e:
             logging.error(f"  Failed to write conserved annotated output files: {e}")
