@@ -27,6 +27,7 @@ This repository is organized into the following directories:
     -   `reference/`: Reference files like taxonomies or domain information.
 -   **`/envs`**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
 -   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results.
+    - `Database_pub_analysis.ipynb`: Notebook for the analysis of the database.
     - `Figures_DB_Pub.ipynb`: Notebook for generating the figures for the publication.
     - `database_assembly.ipynb`: Notebook for assembling the database.
 -   **`/scripts`**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
@@ -320,16 +321,12 @@ This section outlines a potential workflow for using the scripts in the `scripts
 
 This workflow provides a comprehensive guide. Remember to adapt file paths, names, and specific tool parameters based on your actual data and analytical goals. For detailed options of each script, run `python scripts/script_name.py --help`.
 
-    # Detailed methods of how we used these scripts and analyzed the outputs are available in the Methods section of the pub  
+    # Detailed methods of how we used these scripts and analyzed the outputs are available in the Methods section of  the pub (https://doi.org/10.57844/arcadia-prc5-56p7) 
 
 #### Database Integration
 
 All annotations and metadata were iteratively merged into a single `proteome_database` CSV file using the `database_assembly.ipynb` Jupyter notebook.
 
-
-#### Exploratory Data Analysis
-
-Exploratory data analysis was conducted using Jupyter notebooks located in the `notebooks/` directory. The Python libraries pandas, matplotlib, seaborn, and arcadia-pycolor were used to analyze the dataset's composition, sequence features, functional annotations, and the sequence divergence within orthogroups.
 
 ### Compute Specifications
 
