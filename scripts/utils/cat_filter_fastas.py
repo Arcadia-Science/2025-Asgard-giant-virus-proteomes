@@ -3,9 +3,25 @@
 """
 Prepares FASTA subsets for downstream analysis (e.g., InterProScan, CD-HIT).
 
-1. Concatenates multiple FASTA files from an input directory into a single file.
-2. Filters the concatenated FASTA file based on keywords in the sequence headers
-   to create a subset (e.g., hypothetical proteins).
+This script performs two main operations:
+1.  Concatenates all FASTA files (ending in .fasta, .faa, or .fa) from an
+    input directory into a single, large FASTA file.
+2.  Filters the concatenated FASTA file to create a subset based on keywords
+    found in the sequence headers. This is useful for creating specific datasets,
+    such as a collection of all hypothetical or uncharacterized proteins.
+
+The filtering logic is designed to be flexible, allowing customization of the
+keywords, the header delimiter, and the specific field to search within the header.
+
+Example Usage:
+    # Create a concatenated file of all proteins and a filtered file
+    # containing only hypothetical proteins.
+    python scripts/utils/cat_filter_fastas.py \\
+        -i data/processed_fastas/ \\
+        -c data/intermediate/all_proteins.fasta \\
+        -f data/intermediate/hypothetical_proteins.fasta \\
+        --keywords "hypothetical" "unknown function" "uncharacterized" \\
+        --name_index 4
 """
 
 import os

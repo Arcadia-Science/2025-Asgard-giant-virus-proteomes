@@ -2,11 +2,44 @@
 
 """
 Analyzes OrthoFinder results to provide summary statistics, identify conserved
-orthogroups (both hypothetical and annotated), generate basic visualizations,
-and optionally incorporate phylum-level analysis.
+orthogroups, and generate visualizations.
 
-This script integrates OrthoFinder output with metadata parsed from the input
-FASTA files used for the OrthoFinder run and an optional phylum mapping file.
+This script serves as a comprehensive tool to process the output of an
+OrthoFinder run. It performs the following key functions:
+
+1.  **Parses OrthoFinder Output**: Reads the 'Orthogroups.tsv' file to understand
+    the composition of each orthogroup (OG).
+2.  **Integrates Protein Metadata**: Parses headers from the input FASTA files
+    that were used for the OrthoFinder run. It extracts information like
+    ProteinID, GenomeID, and annotation status (hypothetical vs. annotated).
+    This metadata is crucial for downstream analysis.
+3.  **Calculates OG Statistics**: For each orthogroup, it calculates:
+    - The number of proteins.
+    - The number of species represented.
+    - The percentage of species conservation.
+    - The percentage of proteins that are hypothetical.
+4.  **Phylum-Level Analysis (Optional)**: If a mapping file from GenomeID to
+    phylum is provided, the script will incorporate this information, calculating
+    the number of unique phyla per OG.
+5.  **Identifies and Saves Conserved OGs**: Based on a user-defined conservation
+    threshold (e.g., present in >=80% of species), it filters and saves lists of:
+    - Conserved hypothetical orthogroups.
+    - Conserved annotated orthogroups.
+6.  **Generates Summary Report and Plots**: It creates a detailed text summary
+    of the analysis and generates plots visualizing the distribution of species
+    and proteins per orthogroup.
+
+The script is designed to be flexible, with command-line arguments to control
+thresholds, file paths, and analysis parameters.
+
+Example Usage:
+    python scripts/orthofinder_analysis.py \\
+        -r /path/to/orthofinder/Results_Dir/ \\
+        -f /path/to/input_fastas/ \\
+        --phylum_map /path/to/genome_to_phylum_map.tsv \\
+        -p MyProject_OrthoFinder \\
+        --plot_dir /path/to/output_plots/ \\
+        --conservation_threshold 90
 """
 
 import pandas as pd

@@ -20,16 +20,21 @@ DEFAULT_INPUT_PATTERN="*.faa" # Default to .faa, can be changed
 usage() {
   echo "Usage: $0 -i <input_directory> -o <output_directory> [OPTIONS]"
   echo ""
+  echo "This script runs DIAMOND blastp on all FASTA files matching a pattern in an input directory."
+  echo ""
   echo "Required arguments:"
   echo "  -i, --input-dir <dir>     Path to the directory containing protein FASTA files."
   echo "  -o, --output-dir <dir>    Path to the directory where DIAMOND results will be saved."
   echo ""
   echo "Optional arguments:"
-  echo "  -d, --db <path>           Path to the DIAMOND database (default: ${DEFAULT_DB_PATH})"
-  echo "  -t, --threads <int>       Number of threads for DIAMOND (default: ${DEFAULT_THREADS})"
-  echo "  -m, --max-seqs <int>      Maximum number of target sequences per query for DIAMOND (default: ${DEFAULT_MAX_TARGET_SEQS})"
-  echo "  -p, --pattern <glob>      Glob pattern for input FASTA files (default: '${DEFAULT_INPUT_PATTERN}') e.g., '*.fasta'"
+  echo "  -d, --db <path>           Path to the DIAMOND database (default: ${DEFAULT_DB_PATH})."
+  echo "  -t, --threads <int>       Number of threads for DIAMOND (default: ${DEFAULT_THREADS})."
+  echo "  -m, --max-seqs <int>      Maximum number of target sequences per query (default: ${DEFAULT_MAX_TARGET_SEQS})."
+  echo "  -p, --pattern <glob>      Glob pattern for input FASTA files (default: '${DEFAULT_INPUT_PATTERN}'). Example: '*.fasta'"
   echo "  -h, --help                Display this help message."
+  echo ""
+  echo "Example:"
+  echo "  bash $0 -i data/processed_fastas/ -o results/diamond_search/ -d /path/to/db.dmnd -t 32 -p '*.fasta'"
   exit 1
 }
 

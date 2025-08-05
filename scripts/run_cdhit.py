@@ -6,6 +6,15 @@ Runs the CD-HIT clustering tool on an input FASTA file.
 This script provides a wrapper around the cd-hit command-line tool,
 allowing parameters like identity threshold, word size, memory, and threads
 to be specified via arguments.
+
+Example:
+    python scripts/run_cdhit.py \\
+        -i data/concatenated_proteomes.fasta \\
+        -o results/nr90_proteomes.fasta \\
+        -c 0.9 \\
+        -n 5 \\
+        -T 8 \\
+        -M 16000
 """
 
 import os

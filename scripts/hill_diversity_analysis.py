@@ -1,3 +1,25 @@
+"""
+Calculates Hill diversity profiles for orthogroups based on feature abundances.
+
+This script takes a CSV file where rows represent orthogroups and columns represent
+the abundance of different features (e.g., domain counts, species counts) within
+each orthogroup. It calculates the Hill diversity for a range of `q` values (from 0 to 3)
+for each orthogroup.
+
+Hill diversity is a unified framework for measuring biodiversity. The parameter `q`
+determines the sensitivity of the metric to the rarity of features:
+- q=0: Richness (the number of unique features).
+- q=1: The exponential of Shannon entropy (weights features by their frequency).
+- q=2: The inverse Simpson index (gives more weight to common features).
+
+The output is a long-format CSV file containing the orthogroup, the `q` value, and the
+calculated diversity, suitable for plotting diversity profiles.
+
+Example:
+    python scripts/hill_diversity_analysis.py \\
+        -i data/analysis/orthogroup_domain_counts.csv \\
+        -o results/diversity_profiles/domain_hill_diversity.csv
+"""
 import pandas as pd
 import numpy as np
 import argparse

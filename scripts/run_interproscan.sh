@@ -2,6 +2,27 @@
 
 # Wrapper script to launch InterProScan 5, handling configuration,
 # environment setup, and Java validation.
+#
+# This script is designed to be a robust replacement for the `interproscan.sh`
+# script provided with InterProScan. It performs several key checks before
+# launching the Java application:
+#   - Validates that a suitable Java version (11+) is available.
+#   - Sets up necessary environment variables for embedded tools like EMBOSS.
+#   - Correctly resolves relative paths for input/output files based on the
+#     directory where the user invokes the script.
+#   - Allows for custom configuration via an environment variable.
+#
+# All command-line arguments passed to this script are forwarded directly
+# to the underlying interproscan-5.jar.
+#
+# Example Usage:
+#   bash scripts/run_interproscan.sh \\
+#       -i /path/to/my_proteins.fasta \\
+#       -d /path/to/output_directory/ \\
+#       -f TSV,GFF3 \\
+#       -goterms \\
+#       -pa \\
+#       --cpu 16
 
 # Exit immediately if a command exits with a non-zero status.
 # Treat unset variables as an error when substituting.

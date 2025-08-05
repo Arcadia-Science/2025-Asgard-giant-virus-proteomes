@@ -1,3 +1,25 @@
+"""
+Fetch pLDDT scores from the AlphaFold DB for a list of protein identifiers.
+
+This script takes a CSV file containing protein identifiers, fetches the corresponding
+pLDDT (predicted Local Distance Difference Test) confidence scores from the
+AlphaFold Database (AFDB), calculates the average pLDDT score for each protein,
+and saves the results to a new CSV file.
+
+The script is designed to be robust, with error handling for network issues,
+missing data, and incorrect file formats. It includes configurable request delays
+to be respectful of the AFDB API and detailed logging to monitor progress and
+troubleshoot issues.
+
+Example:
+    python scripts/fetch_plddt.py \\
+        -i data/mappings/protein_to_uniprot.csv \\
+        -o data/plddt_scores/all_protein_plddt.csv \\
+        --protein_id_col 'MyProteinID' \\
+        --afdb_id_col 'UniProt_AC' \\
+        --delay 0.1 \\
+        --log_level INFO
+"""
 import pandas as pd
 import requests
 import json

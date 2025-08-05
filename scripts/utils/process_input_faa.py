@@ -4,16 +4,26 @@
 Processes protein FASTA files (.faa), typically from NCBI genome assemblies,
 especially those with bracketed organism info common in viruses or MAGs.
 
-1. Reads protein sequences from 'protein.faa' (or user-specified name) within
-   each genome assembly subdirectory.
-2. Parses the FASTA header to extract Protein ID and annotation. It specifically
-   tries to extract and clean content within the first square brackets `[...]`
-   to use as a 'Taxonomy/Source' field.
-3. Cleans the main annotation string (part before brackets).
-4. Determines annotation type (hypothetical/annotated).
-5. Writes the sequences to a new FASTA file (one per genome) in an output
-   directory, using a custom header format:
-   >ProteinID|GenomeAssemblyID|BracketContent|AnnotationType|CleanedAnnotationName
+This script iterates through subdirectories in a given base directory, where each
+subdirectory represents a single genome assembly. Inside each, it looks for a
+protein FASTA file (e.g., 'protein.faa').
+
+For each sequence in the FASTA file, it performs the following steps:
+1.  Parses the FASTA header to extract the Protein ID and the full description.
+2.  Extracts and cleans content within the first square brackets `[...]` of the
+    description, which is often used for taxonomy or source information.
+3.  Cleans the main annotation string (the part of the description before any brackets).
+4.  Determines if the protein is 'annotated' or 'hypothetical' based on keywords.
+5.  Constructs a new, standardized FASTA header in the format:
+    `>ProteinID|GenomeAssemblyID|BracketContent|AnnotationType|CleanedAnnotationName`
+6.  Writes the processed sequences to a new FASTA file in the specified output
+    directory, with one file created per input genome assembly.
+
+Example Usage:
+    python scripts/utils/process_input_faa.py \\
+        -i /path/to/ncbi_dataset/data/ \\
+        -o data/processed_fastas/ \\
+        --input_faa_name 'protein.faa'
 """
 
 import os
@@ -21,7 +31,6 @@ import sys
 import re
 import argparse
 import logging
-import pandas as pd # For isnull check, can be removed if not strictly needed
 from pathlib import Path
 from Bio import SeqIO # Requires biopython
 

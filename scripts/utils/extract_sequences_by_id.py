@@ -2,14 +2,32 @@
 
 """
 Extracts sequences from a large reference FASTA file based on sequence IDs
-found in multiple 'hit' files (typically TSV/CSV format from tools like DIAMOND).
+found in multiple 'hit' files.
 
-Assumes each hit file corresponds to an Orthologous Group (OG) or query,
-and contains a column with the sequence IDs (sseqid) to extract from the
-reference FASTA. Creates one output FASTA file per input hit file.
+This script is designed to efficiently extract a subset of sequences from a large
+master FASTA file (e.g., all proteomes combined). It takes a directory of 'hit'
+files, where each file contains a list of sequence IDs to be extracted. For each
+hit file, it creates a corresponding output FASTA file containing the sequences
+for the specified IDs.
 
-Includes logic to handle potential discrepancies between the ID format in the
-hit file and the full header format in the reference FASTA file index.
+A key feature is its ability to handle ID mismatches. It builds a lookup map
+from the reference FASTA, allowing it to find sequences even if the IDs in the
+hit files are a simplified version of the full FASTA headers (e.g., matching
+only the accession number before the first '|' or space).
+
+This is particularly useful for extracting all sequences belonging to specific
+Orthologous Groups (OGs) or all hits from a homology search against a large
+database.
+
+Example Usage:
+    # Extract all sequences for OGs listed in .txt files in a directory
+    python scripts/utils/extract_sequences_by_id.py \\
+        -r data/intermediate/all_proteins.fasta \\
+        -d results/orthogroup_hit_lists/ \\
+        -o results/orthogroup_sequences/ \\
+        --hits_suffix .txt \\
+        --hits_column 'ProteinID' \\
+        --header_column 'Full_Header'
 """
 
 import os
