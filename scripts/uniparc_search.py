@@ -9,6 +9,8 @@ Identifiers (UPIs).
 This is typically used for IDs that failed to map directly to UniProtKB.
 """
 
+from __future__ import annotations
+
 import requests
 import time
 import sys

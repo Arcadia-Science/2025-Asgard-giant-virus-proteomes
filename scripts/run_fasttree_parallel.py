@@ -154,7 +154,11 @@ def parse_arguments() -> argparse.Namespace:
         "--output_suffix", default=".tree", help="Suffix for output tree files."
     )
     parser.add_argument(
-        "--fasttree_exe", default="fasttree", help="Path to the FastTree executable."
+        "--fasttree_exe",
+        default="VeryFastTree",
+        help="Path to the FastTree executable. Defaults to 'VeryFastTree', the "
+        "executable provided by the veryfasttree conda package pinned in envs/dev.yml. "
+        "Use 'fasttree'/'FastTree' if you have the original FastTree installed instead.",
     )
     parser.add_argument(
         "--fasttree_args",
