@@ -15,6 +15,26 @@ This repository contains the scripts and analysis notebooks used to construct an
 The large data files required to run this workflow (e.g., raw proteomes, DIAMOND databases, and large intermediate files) are not stored in this Git repository. They are permanently archived and publicly available on Zenodo.
 **To run the analysis, please first download the data from Zenodo [https://doi.org/10.5281/zenodo.15933361] and place the contents into the corresponding subdirectories within the `data/` folder in this repository.**
 
+After extraction, the `data/` directory should contain the following subdirectories (the Git repository already includes these as empty/partial placeholders):
+
+```
+data/
+├── input/                 # Raw and primary input data files (e.g., raw proteomes)
+├── intermediate/          # Files generated during intermediate processing steps
+├── output/                # Final data outputs (analysis results, summary tables)
+├── reference/             # Reference files (taxonomies, domain information)
+└── orthofinder_results/   # OrthoFinder outputs
+    ├── Asgard_OrthoFinder_Results/
+    └── GV_Orthofinder_Results/
+```
+
+After downloading, verify file integrity against the checksums published on the
+Zenodo record page (each file lists an MD5 hash). For example:
+
+```bash
+md5sum -c <(echo "<md5_from_zenodo>  <downloaded_file>")
+```
+
 
 ### Project Structure
 
@@ -26,10 +46,9 @@ This repository is organized into the following directories:
     -   `output/`: Final data outputs, such as analysis results and summary tables.
     -   `reference/`: Reference files like taxonomies or domain information.
 -   **`/envs`**: Contains the Conda environment file (`dev.yml`) for reproducing the computational environment.
--   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results.
-    - `Database_pub_analysis.ipynb`: Notebook for the analysis of the database.
-    - `Figures_DB_Pub.ipynb`: Notebook for generating the figures for the publication.
-    - `database_assembly.ipynb`: Notebook for assembling the database.
+-   **`/notebooks`**: Jupyter notebooks for exploratory data analysis, figure generation, and summarizing results. The `_refactored` notebooks are the canonical versions used for the publication; the originals are retained for provenance.
+    - `database_assembly_refactored.ipynb` (canonical; original: `database_assembly.ipynb`): Notebook for assembling and analyzing the database.
+    - `Figures_DB_Pub_v2_refactored.ipynb` (canonical; original: `Figures_DB_Pub_v2.ipynb`): Notebook for generating the figures for the publication.
 -   **`/scripts`**: Contains the core analysis scripts and workflow wrappers essential for the scientific findings of this paper.
     -   `utils/`: Contains helper scripts for generic data pre-processing tasks, such as filtering FASTA files and formatting headers.
       
@@ -90,8 +109,8 @@ Many of these files are large, and are stored in a Zenodo repository (DOI: 10.52
 This section outlines a potential workflow for using the scripts in the `scripts/` directory. Users will need to adjust paths, input/output names, and specific parameters according to their data and system setup. It's recommended to consult individual script `--help` messages for detailed options.
 
 **Assumptions:**
-*   You have activated an appropriate conda environment.
-*   External tools (DIAMOND, InterProScan, MAFFT, FastTree (or VeryFastTree), USPNet, OrthoFinder) are installed and accessible in your PATH, or their paths are provided to the respective wrapper scripts.
+*   You have created and activated the conda environment from `envs/dev.yml`, which provides DIAMOND, CD-HIT, MAFFT, and VeryFastTree (the `run_fasttree_parallel.py` wrapper defaults to the `VeryFastTree` executable). The `veryfasttree` package installs its executable as `VeryFastTree`; pass `--fasttree_exe fasttree` if you use the original FastTree instead.
+*   Tools not bundled in the conda environment (InterProScan via Docker, USPNet via a local install, and OrthoFinder via Docker) are installed separately and accessible in your PATH, or their paths are provided to the respective wrapper scripts.
 *   Input FASTA files are organized appropriately (e.g., one directory per genome for `process_input_faa.py`, or a single directory of FASTA files for others).
 
 ### Phase 1: Initial Data Preparation & Preprocessing
@@ -113,7 +132,7 @@ This section outlines a potential workflow for using the scripts in the `scripts
     *   Script: `scripts/utils/fasta_length_filter.py`
     *   Example:
         ```bash
-        python scripts/fasta_length_filter.py \
+        python scripts/utils/fasta_length_filter.py \
             -i data/processed_fastas/step1_standardized/ \
             -o data/processed_fastas/step2_len_filtered/ \
             --min_len 80 \
@@ -139,12 +158,13 @@ This section outlines a potential workflow for using the scripts in the `scripts
 
 4.  **Concatenate**
     *   This script can be used to create specific subsets, e.g., all hypothetical proteins for InterProScan.
-    *   Script: `scripts/cat_filter_fastas.py`
+    *   Script: `scripts/utils/cat_filter_fastas.py`
     *   Example (extracting hypotheticals from globular proteins):
         ```bash
-        python scripts/cat_filter_fastas.py \
+        python scripts/utils/cat_filter_fastas.py \
             -i data/processed_fastas/step3_globular_filtered/ \
-            -c data/processed_fastas/all_globular_concat.fasta
+            -c data/processed_fastas/all_globular_concat.fasta \
+            -f data/processed_fastas/all_globular_hypotheticals.fasta
         ```
     *   Input: Directory of FASTA files.
     *   Output: A concatenated FASTA .
@@ -325,7 +345,7 @@ This workflow provides a comprehensive guide. Remember to adapt file paths, name
 
 #### Database Integration
 
-All annotations and metadata were iteratively merged into a single `proteome_database` CSV file using the `database_assembly.ipynb` Jupyter notebook.
+All annotations and metadata were iteratively merged into a single `proteome_database` CSV file using the `database_assembly_refactored.ipynb` Jupyter notebook.
 
 
 ### Compute Specifications

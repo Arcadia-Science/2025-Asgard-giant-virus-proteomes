@@ -9,6 +9,8 @@ and saves the results (UniProtKB_AC, PDB_IDs) to a TSV file.
 Supports resuming from a previous run by checking the output file.
 """
 
+from __future__ import annotations
+
 import requests
 import time
 import io  # To handle string IO for TSV parsing

@@ -12,7 +12,10 @@ Includes logic to handle potential discrepancies between the ID format in the
 hit file and the full header format in the reference FASTA file index.
 """
 
+from __future__ import annotations
+
 import os
+import re
 import sys
 import glob
 import pandas as pd
